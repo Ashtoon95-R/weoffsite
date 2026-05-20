@@ -1,0 +1,57 @@
+{
+	"meta": {
+		"title": "We Offsite — Corporate Retreats for Remote Teams",
+		"description": "B2B corporate retreat planning for remote teams. Strategy, logistics, and unforgettable offsite experiences."
+	},
+	"nav": {
+		"services": "Services",
+		"caseStudies": "Case Studies",
+		"contact": "Contact",
+		"cta": "Book a call"
+	},
+	"hero": {
+		"title": "Save 80% of your time planning your company retreat or event",
+		"subtitle": "At We Offsite we are event planning experts. We help remote companies organize unique team retreats, optimizing costs and logistics.",
+		"ctaPrimary": "Book a call",
+		"ctaSecondary": "View case studies"
+	},
+	"services": {
+		"title": "Event planning for modern companies",
+		"meetings": {
+			"title": "Strategic Meetings",
+			"desc": "Find the ideal environment for productive work sessions."
+		},
+		"retreats": {
+			"title": "Annual Retreats",
+			"desc": "Kick-offs designed to strengthen remote corporate culture."
+		},
+		"logistics": {
+			"title": "Full Logistics",
+			"desc": "We handle everything: from flights and hotels to technical equipment."
+		}
+	},
+	"caseStudies": {
+		"title": "Case studies",
+		"subtitle": "Companies that trust us for their corporate retreats",
+		"viewFull": "View full case"
+	},
+	"calendly": {
+		"eyebrow": "EVENT MANAGEMENT",
+		"title": "Book a call and organize your retreat hassle-free",
+		"placeholder": "Calendly embed — https://calendly.com/weoffsite"
+	},
+	"cta": {
+		"eyebrow": "CONSULTING SERVICES",
+		"title": "Get free proposals for your corporate event",
+		"subtitle": "We analyze your team's goals to present personalized proposals for accommodation, teambuilding and logistics.",
+		"button": "Book a call"
+	},
+	"footer": {
+		"tagline": "Corporate retreat experts",
+		"legal": "© 2025 We Offsite. All rights reserved."
+	},
+	"caseStudyDetail": {
+		"backLink": "Back to case studies",
+		"ctaButton": "Book a call"
+	}
+}

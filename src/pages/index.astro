@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>We Offsite</title>
+		<noscript>
+			<meta http-equiv="refresh" content="0;url=/en/" />
+		</noscript>
+	</head>
+	<body>
+		<p>Redirecting… <a href="/en/">Continue in English</a></p>
+		<script is:inline>
+			const lang = navigator.language?.toLowerCase() ?? 'en';
+			const locale = lang.startsWith('es') ? 'es' : 'en';
+			window.location.replace(`/${locale}/`);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,57 @@
+{
+	"meta": {
+		"title": "We Offsite — Retiros Corporativos para Equipos Remotos",
+		"description": "Planificación B2B de retiros corporativos para equipos remotos. Estrategia, logística y experiencias offsite inolvidables."
+	},
+	"nav": {
+		"services": "Servicios",
+		"caseStudies": "Casos de Éxito",
+		"contact": "Contacto",
+		"cta": "Agenda una llamada"
+	},
+	"hero": {
+		"title": "Ahorra un 80% de tiempo planificando tu retiro de empresa o evento",
+		"subtitle": "En We Offsite somos expertos en la planificación de eventos. Ayudamos a empresas remotas a organizar retiros de equipo únicos, optimizando costes y logística.",
+		"ctaPrimary": "Agenda una llamada",
+		"ctaSecondary": "Ver casos de éxito"
+	},
+	"services": {
+		"title": "Planificación de eventos para empresas modernas",
+		"meetings": {
+			"title": "Reuniones Estratégicas",
+			"desc": "Encuentra el entorno ideal para sesiones de trabajo productivas."
+		},
+		"retreats": {
+			"title": "Retiros Anuales",
+			"desc": "Kick-offs diseñados para fortalecer la cultura corporativa remota."
+		},
+		"logistics": {
+			"title": "Logística Integral",
+			"desc": "Nos encargamos de todo: desde vuelos y hoteles hasta material técnico."
+		}
+	},
+	"caseStudies": {
+		"title": "Casos de éxito",
+		"subtitle": "Empresas que confían en nosotros para sus retiros corporativos",
+		"viewFull": "Ver caso completo"
+	},
+	"calendly": {
+		"eyebrow": "GESTIÓN DE EVENTOS",
+		"title": "Agenda una llamada y organiza tu retiro sin complicaciones",
+		"placeholder": "Calendly embed — https://calendly.com/weoffsite"
+	},
+	"cta": {
+		"eyebrow": "SERVICIOS DE CONSULTORÍA",
+		"title": "Obtén propuestas gratuitas para tu evento corporativo",
+		"subtitle": "Analizamos los objetivos de tu equipo para presentar propuestas personalizadas de alojamiento, teambuilding y logística.",
+		"button": "Agenda una llamada"
+	},
+	"footer": {
+		"tagline": "Expertos en retiros corporativos",
+		"legal": "© 2025 We Offsite. Todos los derechos reservados."
+	},
+	"caseStudyDetail": {
+		"backLink": "Volver a casos de éxito",
+		"ctaButton": "Agenda una llamada"
+	}
+}
