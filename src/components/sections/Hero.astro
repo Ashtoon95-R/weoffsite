@@ -1,6 +1,7 @@
 ---
+import type { Locale } from '../../i18n';
+import { getTranslations } from '../../i18n';
 import Button from '../ui/Button.astro';
-import { getTranslations, type Locale } from '../../i18n';
 
 interface Props {
 	locale: Locale;
@@ -8,42 +9,144 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = getTranslations(locale);
+
+const words = t.hero.title.split(' ');
 ---
 
-<section
-	class="relative flex min-h-[calc(100vh-4.5rem)] items-center overflow-hidden"
-	aria-labelledby="hero-title"
->
-	<div
-		class="absolute inset-0 bg-gradient-to-br from-primary via-secondary to-accent"
-		aria-hidden="true"
-	></div>
-	<div
-		class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(3,105,161,0.35),transparent_55%)]"
-		aria-hidden="true"
-	></div>
-	<div class="absolute inset-0 bg-black/20" aria-hidden="true"></div>
+<section class="noise relative min-h-screen bg-ink">
+	<div class="relative z-10 mx-auto max-w-7xl px-6 pb-20 pt-28 lg:px-8 lg:pt-36">
+		<div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-[60%_40%]">
 
-	<div class="relative mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-		<div class="max-w-3xl">
-			<h1
-				id="hero-title"
-				class="font-heading text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl"
-			>
-				{t.hero.title}
-			</h1>
-			<p class="mt-6 max-w-2xl text-base leading-relaxed text-white/90 sm:text-lg md:text-xl">
-				{t.hero.subtitle}
-			</p>
-			<div class="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-				<Button href="#calendly-section">{t.hero.ctaPrimary}</Button>
-				<a
-					href="#case-studies"
-					class="cursor-pointer text-center text-base font-semibold text-white underline-offset-4 transition-all duration-200 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+			<!-- Left column: editorial copy -->
+			<div>
+				<!-- Eyebrow -->
+				<p
+					class="reveal font-mono text-[11px] uppercase tracking-widest text-gold"
+					data-delay="0"
 				>
-					{t.hero.ctaSecondary}
-				</a>
+					{t.hero.eyebrow}
+				</p>
+
+				<!-- H1 — word-by-word stagger animation -->
+				<h1
+					class="mt-6 font-display text-[52px] font-bold leading-[0.92] tracking-tighter text-parchment md:text-[80px] lg:text-[96px]"
+					aria-label={t.hero.title}
+				>
+					{
+						words.map((word, i) => (
+							<span
+								class="word-animate"
+								style={`animation-delay: ${i * 80}ms`}
+								aria-hidden="true"
+							>
+								{word}{' '}
+							</span>
+						))
+					}
+				</h1>
+
+				<!-- Subtitle -->
+				<p
+					class="reveal mt-8 max-w-[480px] font-body text-lg leading-relaxed text-mist"
+					data-delay="300"
+				>
+					{t.hero.subtitle}
+				</p>
+
+				<!-- Stats row -->
+				<div
+					class="reveal mt-10 grid grid-cols-3 gap-0 border-t border-gold/20 pt-8"
+					data-delay="400"
+				>
+					<div class="pr-6 border-r border-gold/20">
+						<p class="font-display text-3xl font-bold text-gold lg:text-4xl">
+							<span data-countup={t.hero.stat1Value} data-suffix={t.hero.stat1Suffix}>0{t.hero.stat1Suffix}</span>
+						</p>
+						<p class="mt-1.5 font-mono text-[10px] uppercase tracking-widest text-mist/70">
+							{t.hero.stat1Label}
+						</p>
+					</div>
+					<div class="px-6 border-r border-gold/20">
+						<p class="font-display text-3xl font-bold text-gold lg:text-4xl">
+							<span data-countup={t.hero.stat2Value} data-suffix={t.hero.stat2Suffix}>0{t.hero.stat2Suffix}</span>
+						</p>
+						<p class="mt-1.5 font-mono text-[10px] uppercase tracking-widest text-mist/70">
+							{t.hero.stat2Label}
+						</p>
+					</div>
+					<div class="pl-6">
+						<p class="font-display text-3xl font-bold text-gold lg:text-4xl">
+							<span data-countup={t.hero.stat3Value} data-suffix={t.hero.stat3Suffix}>0{t.hero.stat3Suffix}</span>
+						</p>
+						<p class="mt-1.5 font-mono text-[10px] uppercase tracking-widest text-mist/70">
+							{t.hero.stat3Label}
+						</p>
+					</div>
+				</div>
+
+				<!-- CTAs -->
+				<div class="reveal mt-10 flex flex-col gap-4 sm:flex-row sm:items-center" data-delay="500">
+					<Button href="#calendly-section" variant="rust">
+						{t.hero.ctaPrimary}
+					</Button>
+					<a
+						href="#case-studies"
+						class="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-parchment/60 transition-colors duration-200 hover:text-gold cursor-pointer"
+					>
+						{t.hero.ctaSecondary}
+						<span class="inline-block translate-x-0 transition-transform duration-200 group-hover:translate-x-1">
+							→
+						</span>
+					</a>
+				</div>
+			</div>
+
+			<!-- Right column: photo stack (editorial masonry) -->
+			<div class="hidden lg:block" aria-hidden="true">
+				<div class="relative h-[540px]">
+					<!-- Back frame -->
+					<div
+						class="absolute inset-0 border border-gold/20 bg-gradient-to-br from-forest to-ink"
+						style="transform: translate(24px, 24px);"
+					>
+					</div>
+					<!-- Mid frame -->
+					<div
+						class="absolute inset-0 border border-gold/30 bg-gradient-to-bl from-mist/10 to-forest/60"
+						style="transform: translate(12px, 12px);"
+					>
+						<div
+							class="absolute inset-0 opacity-10"
+							style="background: repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(201,168,76,0.15) 12px, rgba(201,168,76,0.15) 13px);"
+						>
+						</div>
+					</div>
+					<!-- Front frame: main photo with gold border -->
+					<div class="absolute inset-0 overflow-hidden border border-gold/60 bg-gradient-to-br from-forest-light to-ink">
+						<div
+							class="absolute inset-0 opacity-20"
+							style="background: repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(201,168,76,0.08) 60px, rgba(201,168,76,0.08) 61px);"
+						>
+						</div>
+						<div class="absolute bottom-6 left-6 right-6">
+							<p class="font-mono text-[10px] uppercase tracking-widest text-gold/60">
+								Team Retreat · 2024
+							</p>
+						</div>
+					</div>
+					<!-- Accent photo: top-right overflow -->
+					<div
+						class="absolute -right-8 -top-8 h-32 w-40 border border-gold/30 bg-gradient-to-br from-sand/10 to-forest/80"
+					>
+					</div>
+				</div>
 			</div>
 		</div>
+	</div>
+
+	<!-- Gold contour line decoration -->
+	<div
+		class="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"
+	>
 	</div>
 </section>

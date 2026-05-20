@@ -1,0 +1,35 @@
+---
+import type { Locale } from '../../i18n';
+import { getTranslations } from '../../i18n';
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+
+const logos = ['Kayzen', 'Paperlike', 'Incident.io', 'OPTI Digital', 'Balena', 'Definely', 'Graphite'];
+---
+
+<section class="overflow-hidden bg-sand py-10">
+	<p class="mb-6 text-center font-mono text-[11px] uppercase tracking-widest text-ink/40">
+		{t.logoBar.prefix}
+	</p>
+
+	<div class="overflow-hidden" aria-hidden="true">
+		<!-- Track contains 2 copies for seamless loop -->
+		<div class="marquee-track flex w-max items-center gap-12 px-6">
+			{
+				[...logos, ...logos].map((logo, i) => (
+					<span
+						class="flex items-center gap-3 cursor-default select-none font-mono text-sm uppercase tracking-widest text-ink/40 transition-colors duration-200 hover:text-ink/90"
+					>
+						<span class="h-px w-4 bg-gold/40" aria-hidden="true"></span>
+						{logo}
+					</span>
+				))
+			}
+		</div>
+	</div>
+</section>

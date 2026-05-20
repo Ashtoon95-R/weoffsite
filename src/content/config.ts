@@ -12,6 +12,7 @@ const caseStudies = defineCollection({
 		coverImage: z.string(),
 		lang: z.enum(['es', 'en']),
 		date: z.date(),
+		coordinates: z.string().optional(),
 	}),
 });
 

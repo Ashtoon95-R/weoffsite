@@ -1,22 +1,24 @@
 ---
 interface Props {
-	variant?: 'primary' | 'secondary';
+	variant?: 'rust' | 'ghost' | 'primary' | 'secondary';
 	href?: string;
 	class?: string;
+	type?: 'button' | 'submit' | 'reset';
 }
 
-const { variant = 'primary', href, class: className = '' } = Astro.props;
+const { variant = 'rust', href, class: className = '', type = 'button' } = Astro.props;
 
 const base =
-	'inline-flex items-center justify-center rounded-lg px-6 py-3 text-base font-semibold transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2';
+	'inline-flex items-center justify-center font-mono text-xs tracking-widest uppercase cursor-pointer transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink';
 
-const variants = {
-	primary: 'bg-cta text-white hover:opacity-90 hover:-translate-y-0.5',
-	secondary:
-		'border-2 border-primary bg-transparent text-primary hover:bg-primary/5 hover:-translate-y-0.5',
+const variants: Record<string, string> = {
+	rust:      'bg-rust text-white px-6 py-3 hover:bg-gold',
+	ghost:     'border border-gold/40 text-parchment px-6 py-3 hover:border-gold hover:text-gold',
+	primary:   'bg-rust text-white px-6 py-3 hover:bg-gold',
+	secondary: 'border border-gold/40 text-parchment px-6 py-3 hover:border-gold hover:text-gold',
 };
 
-const classes = `${base} ${variants[variant]} ${className}`;
+const classes = [base, variants[variant], className].filter(Boolean).join(' ');
 ---
 
 {
@@ -25,7 +27,7 @@ const classes = `${base} ${variants[variant]} ${className}`;
 			<slot />
 		</a>
 	) : (
-		<button type="button" class={classes}>
+		<button type={type} class={classes}>
 			<slot />
 		</button>
 	)
