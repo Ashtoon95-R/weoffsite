@@ -1,0 +1,16 @@
+---
+import Layout from '../../../components/layout/Layout.astro';
+import CaseStudiesHero from '../../../components/sections/case-studies/CaseStudiesHero.astro';
+import CaseStudies from '../../../components/sections/CaseStudies.astro';
+import CalendlySection from '../../../components/sections/CalendlySection.astro';
+import { getTranslations } from '../../../i18n';
+
+const locale = 'es';
+const t = getTranslations(locale);
+---
+
+<Layout title={t.caseStudies.meta.title} description={t.caseStudies.meta.description} lang={locale}>
+	<CaseStudiesHero locale={locale} />
+	<CaseStudies locale={locale} hideHeader />
+	<CalendlySection locale={locale} />
+</Layout>

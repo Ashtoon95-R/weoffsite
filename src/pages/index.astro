@@ -1,18 +1,31 @@
+---
+import en from '../i18n/en.json';
+import es from '../i18n/es.json';
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>We Offsite</title>
+		<title>{en.common.brandName}</title>
 		<noscript>
 			<meta http-equiv="refresh" content="0;url=/en/" />
 		</noscript>
 	</head>
 	<body>
-		<p>Redirecting… <a href="/en/">Continue in English</a></p>
-		<script is:inline>
+		<p id="redirect-msg">{en.common.redirecting}</p>
+		<p>
+			<a id="link-en" href="/en/">{en.common.continueEn}</a>
+			·
+			<a id="link-es" href="/es/">{es.common.continueEs}</a>
+		</p>
+		<script is:inline define:vars={{ redirectEn: en.common.redirecting, redirectEs: es.common.redirecting }}>
 			const lang = navigator.language?.toLowerCase() ?? 'en';
 			const locale = lang.startsWith('es') ? 'es' : 'en';
+			const msg = document.getElementById('redirect-msg');
+			if (msg) msg.textContent = locale === 'es' ? redirectEs : redirectEn;
+			document.documentElement.lang = locale;
 			window.location.replace(`/${locale}/`);
 		</script>
 	</body>

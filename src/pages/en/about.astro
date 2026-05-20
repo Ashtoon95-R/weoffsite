@@ -1,0 +1,22 @@
+---
+import Layout from '../../components/layout/Layout.astro';
+import AboutHero from '../../components/sections/about/AboutHero.astro';
+import AboutMission from '../../components/sections/about/AboutMission.astro';
+import AboutSolutions from '../../components/sections/about/AboutSolutions.astro';
+import AboutWhyChoose from '../../components/sections/about/AboutWhyChoose.astro';
+import AboutFinalCta from '../../components/sections/about/AboutFinalCta.astro';
+import CalendlySection from '../../components/sections/CalendlySection.astro';
+import { getTranslations } from '../../i18n';
+
+const locale = 'en';
+const t = getTranslations(locale);
+---
+
+<Layout title={t.about.meta.title} description={t.about.meta.description} lang={locale}>
+	<AboutHero locale={locale} />
+	<AboutMission locale={locale} />
+	<AboutSolutions locale={locale} />
+	<AboutWhyChoose locale={locale} />
+	<AboutFinalCta locale={locale} />
+	<CalendlySection locale={locale} />
+</Layout>

@@ -1,0 +1,23 @@
+---
+import { getTranslations, type Locale } from '../../../i18n';
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+---
+
+<section class="bg-background py-16 md:py-24" aria-labelledby="benefits-expense-title">
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-3xl text-center">
+			<h2 id="benefits-expense-title" class="font-heading text-3xl font-bold tracking-tight text-primary md:text-4xl">
+				{t.benefits.expense.title}
+			</h2>
+			<p class="mt-6 text-base leading-relaxed text-secondary md:text-lg">
+				{t.benefits.expense.desc}
+			</p>
+		</div>
+	</div>
+</section>

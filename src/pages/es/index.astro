@@ -1,10 +1,12 @@
 ---
 import Layout from '../../components/layout/Layout.astro';
 import Hero from '../../components/sections/Hero.astro';
+import LogoBar from '../../components/sections/LogoBar.astro';
 import CaseStudies from '../../components/sections/CaseStudies.astro';
+import HowItWorks from '../../components/sections/HowItWorks.astro';
 import Services from '../../components/sections/Services.astro';
+import Stats from '../../components/sections/Stats.astro';
 import CalendlySection from '../../components/sections/CalendlySection.astro';
-import ContactCTA from '../../components/sections/ContactCTA.astro';
 import { getTranslations } from '../../i18n';
 
 const locale = 'es';
@@ -13,8 +15,10 @@ const t = getTranslations(locale);
 
 <Layout title={t.meta.title} description={t.meta.description} lang={locale}>
 	<Hero locale={locale} />
+	<LogoBar locale={locale} />
 	<CaseStudies locale={locale} />
+	<HowItWorks locale={locale} />
 	<Services locale={locale} />
+	<Stats locale={locale} />
 	<CalendlySection locale={locale} />
-	<ContactCTA locale={locale} />
 </Layout>

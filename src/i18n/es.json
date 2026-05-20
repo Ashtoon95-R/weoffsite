@@ -1,13 +1,176 @@
 {
+	"common": {
+		"brandName": "We Offsite",
+		"links": "Enlaces",
+		"social": "Redes sociales",
+		"mainNav": "Navegación principal",
+		"mobileNav": "Navegación móvil",
+		"footerNav": "Navegación del pie de página",
+		"languageSelector": "Selector de idioma",
+		"openMenu": "Abrir menú",
+		"closeMenu": "Cerrar menú",
+		"redirecting": "Redirigiendo…",
+		"continueEn": "Continuar en inglés",
+		"continueEs": "Continuar en español"
+	},
 	"meta": {
 		"title": "We Offsite — Retiros Corporativos para Equipos Remotos",
 		"description": "Planificación B2B de retiros corporativos para equipos remotos. Estrategia, logística y experiencias offsite inolvidables."
 	},
 	"nav": {
+		"about": "Sobre Nosotros",
+		"benefits": "Beneficios",
 		"services": "Servicios",
 		"caseStudies": "Casos de Éxito",
 		"contact": "Contacto",
 		"cta": "Agenda una llamada"
+	},
+	"about": {
+		"meta": {
+			"title": "Sobre Nosotros — We Offsite",
+			"description": "Ayudamos a empresas distribuidas y remotas a planificar retiros corporativos con cumplimiento normativo del 100%, expertos dedicados y un 80% menos de tiempo de planificación."
+		},
+		"hero": {
+			"title": "Ayudamos a las empresas a llevar a sus equipos a cualquier lugar",
+			"subtitle": "En We Offsite, nuestra misión es revolucionar la planificación de eventos corporativos para empresas distribuidas y remotas. Permitimos a las organizaciones lograr ahorros sin precedentes y un 100% de cumplimiento normativo al planificar y reservar retiros corporativos. Nuestro enfoque integral le ayuda a ahorrar más del 80% del tiempo que normalmente se dedica a organizar offsites de empresa.",
+			"cta": "Agendar una llamada"
+		},
+		"mission": {
+			"label": "Nuestra misión",
+			"title": "Organizadores de viajes y gestores de eventos: ¡estamos aquí para ustedes!",
+			"expertise": {
+				"title": "Nuestra experiencia",
+				"desc": "Planificar eventos corporativos y viajes de equipo no debería ser un dolor de cabeza. Nuestra tecnología propietaria reduce drásticamente el tiempo que su equipo dedica a planificar el retiro corporativo, garantizando un 100% de cumplimiento de presupuesto y políticas. Transformamos procesos complejos en una experiencia fluida."
+			},
+			"purpose": {
+				"title": "Nuestro propósito",
+				"desc": "Nuestro objetivo es ampliar las capacidades de las organizaciones mientras enriquecemos las carreras de sus empleados con nuevas oportunidades de aprendizaje y vínculo. Creemos que optimizar recursos y agilizar procesos son dos elementos fundamentales en toda organización exitosa."
+			},
+			"model": {
+				"title": "Nuestro modelo",
+				"desc": "Aplicamos los mismos principios para nosotros: con los intereses de nuestros clientes en mente, hemos optimizado nuestros recursos para garantizar que cada empresa cuente con un experto dedicado 1:1 que la acompañe en cada paso. Desde la planificación inicial hasta la ejecución in situ."
+			}
+		},
+		"solutions": {
+			"title": "Nuestras soluciones",
+			"offsites": {
+				"title": "Retiros de empresa",
+				"desc": "Reúna a sus equipos distribuidos y remotos mediante encuentros significativos y trabajo enriquecedor. Un retiro corporativo exitoso ofrece tiempo energizante fuera de la oficina, consolidando la cultura y la colaboración."
+			},
+			"events": {
+				"title": "Eventos corporativos",
+				"desc": "La logística detrás de reuniones offsite, cumbres o conferencias puede consumir mucho tiempo. Optimice sus recursos dejando que nuestro equipo experto se encargue de todo."
+			},
+			"meetups": {
+				"title": "Encuentros de equipo",
+				"desc": "Creemos en el poder de reunirse para fortalecer las relaciones. Nuestras soluciones facilitan actividades de team building impactantes que fomentan la conexión y la colaboración."
+			}
+		},
+		"whyChoose": {
+			"title": "Por qué elegirnos",
+			"expenses": {
+				"title": "Control total de los gastos",
+				"desc": "Descubra si el viaje de su equipo está dentro del presupuesto antes de empezar a reservar."
+			},
+			"rates": {
+				"title": "Tarifas inferiores a las públicas",
+				"desc": "Negociamos expertamente en su nombre todo, desde alojamiento hasta salas de reuniones."
+			},
+			"support": {
+				"title": "Soporte dedicado 1 a 1",
+				"desc": "Optimizamos nuestros recursos para garantizar que un experto dedicado le acompañe en cada paso."
+			},
+			"time": {
+				"title": "80% del tiempo de planificación ahorrado",
+				"desc": "Agilizamos el proceso de planificación del offsite y lo convertimos en una experiencia sin esfuerzo."
+			},
+			"policy": {
+				"title": "Cada reserva dentro de la política",
+				"desc": "Defina una política de empresa y reciba solicitudes de aprobación directamente en su bandeja de entrada."
+			},
+			"allInOne": {
+				"title": "Todo en el mismo lugar",
+				"desc": "Transporte, alojamiento, espacios, actividades, traslados, comidas, merchandising, visados—todo cubierto."
+			}
+		},
+		"finalCta": {
+			"title": "Empiece a ahorrar en su próximo retiro de empresa",
+			"subtitle": "Ahorre al instante el 80% del tiempo que dedica a organizar viajes de equipo, reuniones offsite y retiros corporativos. We Offsite transforma la planificación compleja de offsites en una experiencia sencilla.",
+			"cta": "Agendar una llamada"
+		}
+	},
+	"benefits": {
+		"meta": {
+			"title": "Beneficios — We Offsite",
+			"description": "Búsqueda inteligente de espacios, cumplimiento normativo del 100%, presupuestos transparentes, tarifas exclusivas y soporte dedicado de principio a fin para retiros corporativos."
+		},
+		"cta": "Agendar una llamada",
+		"hero": {
+			"label": "Búsqueda inteligente de espacios offsite",
+			"title": "Un retiro de equipo rentable empieza con las decisiones correctas",
+			"subtitle": "Compare los costes de viaje de cada ubicación candidata para el offsite y descubra qué fechas son las más económicas para celebrar el retiro de su equipo."
+		},
+		"features": {
+			"ariaLabel": "Beneficios de la plataforma",
+			"search": {
+				"title": "Búsqueda inteligente de espacios offsite",
+				"desc": "Compare los costes de viaje de cada ubicación candidata para el offsite y descubra qué fechas son las más económicas para celebrar el retiro de su equipo."
+			},
+			"compliance": {
+				"title": "Logre un 100% de cumplimiento en su viaje offsite",
+				"desc": "Asegúrese de que sus empleados reserven el viaje offsite según la política de la empresa. Verifique fácilmente el estado de cada viaje offsite y obtenga una visión general de los costes antes de reservar el viaje de su equipo, garantizando que se mantenga dentro del presupuesto."
+			},
+			"venues": {
+				"title": "Búsqueda simplificada de espacios offsite",
+				"desc": "Encuentre fácilmente el espacio perfecto para su retiro corporativo. Desde rascacielos hasta cabañas aisladas en el campo o estancias en castillos: indíquenos sus requisitos y prepararemos una selección de espacios tras negociar con proveedores para presentarle los mejores lugares para el offsite de su equipo."
+			}
+		},
+		"expense": {
+			"title": "Control transparente de gastos offsite",
+			"desc": "Domine su presupuesto offsite y maximice el ahorro. Reciba un presupuesto completo antes de elegir una ubicación offsite, incluyendo viajes, alojamiento, espacios de reuniones, comidas, actividades y traslados. Compare fácilmente los costes con su presupuesto para garantizar offsites rentables y maximizar el ahorro en viajes corporativos."
+		},
+		"stats": {
+			"stat1Value": "100",
+			"stat1Suffix": "%",
+			"stat1Label": "Offsites de empresa reservados dentro de la política",
+			"stat2Value": "92",
+			"stat2Suffix": "%",
+			"stat2Label": "Retiros corporativos en los que negociamos con éxito tarifas más bajas",
+			"stat3Value": "80",
+			"stat3Suffix": "%",
+			"stat3Label": "Tiempo medio que ahorra planificando viajes offsite",
+			"stat4Value": "0",
+			"stat4Suffix": "",
+			"stat4Label": "Razones para no reunir a su equipo"
+		},
+		"rates": {
+			"title": "Disfrute de tarifas negociadas exclusivas",
+			"desc": "Benefíciese de tarifas inferiores a las públicas, desde habitaciones con descuento hasta exención de tasas de resort. Nuestro equipo experto negocia en su nombre para que disfrute de las tarifas más competitivas y maximice su presupuesto al reservar el offsite de su equipo."
+		},
+		"agenda": {
+			"title": "Cree y comparta la agenda de su retiro de equipo",
+			"desc": "Cree fácilmente un programa para su retiro de team building o offsite de empresa y compártalo con su equipo para que todos estén informados. Mantenga la flexibilidad con nuestra herramienta: edite o elimine eventos y su equipo verá las actualizaciones en tiempo real."
+		},
+		"support": {
+			"label": "Soporte dedicado de principio a fin",
+			"title": "Asistencia personalizada en todo momento",
+			"changes": {
+				"title": "Cambios y cancelaciones",
+				"desc": "Déjenos ayudarle si sus planes cambian."
+			},
+			"travel": {
+				"title": "Asistencia el día del viaje",
+				"desc": "Contacte con nuestro equipo si tiene algún problema el día del viaje."
+			},
+			"accommodation": {
+				"title": "Gestión de alojamiento",
+				"desc": "Negociamos tarifas y condiciones contractuales con los espacios."
+			},
+			"advice": {
+				"title": "Asesoramiento experto en planificación",
+				"desc": "Contáctenos en cualquier momento y aproveche la experiencia de nuestro equipo en la planificación de offsites corporativos."
+			}
+		}
 	},
 	"hero": {
 		"title": "Ahorra un 80% de tiempo planificando tu retiro de empresa o evento",
@@ -58,6 +221,13 @@
 	"caseStudies": {
 		"title": "Casos de éxito",
 		"subtitle": "Empresas que confían en nosotros para sus retiros corporativos",
+		"label": "Casos de éxito",
+		"pageTitle": "Retiros reales, resultados reales",
+		"pageSubtitle": "Descubra cómo equipos distribuidos en todo el mundo planifican offsites inolvidables con We Offsite — desde Park City hasta Phuket, Barcelona o el Algarve.",
+		"meta": {
+			"title": "Casos de Éxito — We Offsite",
+			"description": "Historias de éxito en retiros corporativos: Graphite, Kayzen, Paperlike, Incident.io, OPTI Digital, Balena y Definely."
+		},
 		"viewFull": "Ver caso completo"
 	},
 	"calendly": {

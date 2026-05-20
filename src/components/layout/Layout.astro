@@ -2,7 +2,7 @@
 import '../../styles/global.css';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
-import { getAbsoluteLocaleUrl } from 'astro:i18n';
+import { getLocaleSwitchUrl } from '../../i18n';
 
 interface Props {
 	title: string;
@@ -13,10 +13,10 @@ interface Props {
 
 const { title, description, lang, ogImage = '/favicon.svg' } = Astro.props;
 
-const pathWithoutLocale = Astro.url.pathname.replace(/^\/(en|es)/, '') || '/';
 const canonicalUrl = Astro.url.href;
-const enUrl = getAbsoluteLocaleUrl('en', pathWithoutLocale);
-const esUrl = getAbsoluteLocaleUrl('es', pathWithoutLocale);
+const siteBase = Astro.site ?? Astro.url.origin;
+const enUrl = new URL(getLocaleSwitchUrl('en', Astro.url.pathname), siteBase).href;
+const esUrl = new URL(getLocaleSwitchUrl('es', Astro.url.pathname), siteBase).href;
 const ogLocale = lang === 'es' ? 'es_ES' : 'en_US';
 const ogImageUrl = new URL(ogImage, Astro.site).href;
 ---

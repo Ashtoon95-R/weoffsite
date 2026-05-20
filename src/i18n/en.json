@@ -1,13 +1,176 @@
 {
+	"common": {
+		"brandName": "We Offsite",
+		"links": "Links",
+		"social": "Social",
+		"mainNav": "Main navigation",
+		"mobileNav": "Mobile navigation",
+		"footerNav": "Footer navigation",
+		"languageSelector": "Language selector",
+		"openMenu": "Open menu",
+		"closeMenu": "Close menu",
+		"redirecting": "Redirecting…",
+		"continueEn": "Continue in English",
+		"continueEs": "Continuar en español"
+	},
 	"meta": {
 		"title": "We Offsite — Corporate Retreats for Remote Teams",
 		"description": "B2B corporate retreat planning for remote teams. Strategy, logistics, and unforgettable offsite experiences."
 	},
 	"nav": {
+		"about": "About Us",
+		"benefits": "Benefits",
 		"services": "Services",
 		"caseStudies": "Case Studies",
 		"contact": "Contact",
 		"cta": "Book a call"
+	},
+	"about": {
+		"meta": {
+			"title": "About Us — We Offsite",
+			"description": "We help distributed and remote companies plan corporate retreats with 100% policy compliance, dedicated experts, and 80% less planning time."
+		},
+		"hero": {
+			"title": "We help companies take their teams anywhere",
+			"subtitle": "At We Offsite, our mission is to revolutionize corporate event planning for distributed and remote companies. We enable organizations to achieve unprecedented savings and 100% compliance when planning and booking corporate retreats. Our comprehensive approach helps you save over 80% of the time typically spent organizing company offsites.",
+			"cta": "Schedule a call"
+		},
+		"mission": {
+			"label": "Our mission",
+			"title": "Travel Organizers and Event Managers: We're here for you!",
+			"expertise": {
+				"title": "Our Expertise",
+				"desc": "Planning corporate events and team trips shouldn't be a headache. Our proprietary technology drastically reduces the time your team spends planning your corporate retreat, ensuring 100% budget and policy compliance. We transform complex processes into a seamless experience."
+			},
+			"purpose": {
+				"title": "Our Purpose",
+				"desc": "Our aim is to expand organization's capabilities while enriching their employee's careers with new learning and bonding opportunities. We believe optimizing resources and streamlining processes are two core elements within every successful organization."
+			},
+			"model": {
+				"title": "Our Model",
+				"desc": "We apply the same principles for ourselves: with our client's interests in mind, we have optimized our resources to ensure every company gets a 1:1 dedicated expert to support them every step of the way. From initial planning to on-site execution."
+			}
+		},
+		"solutions": {
+			"title": "Our solutions",
+			"offsites": {
+				"title": "Company Offsites",
+				"desc": "Bring your distributed and remote teams together through meaningful encounters and rewarding work. A successful corporate retreat provides energizing time away from the office, cementing culture and collaboration."
+			},
+			"events": {
+				"title": "Corporate Events",
+				"desc": "The logistics behind offsite meetings, summits or conferences can be time-consuming. Optimize your resources by letting our expert team handle everything."
+			},
+			"meetups": {
+				"title": "Team Meet Ups",
+				"desc": "We believe in the power of coming together to strengthen relationships. Our solutions facilitate impactful team building activities fostering connection and collaboration."
+			}
+		},
+		"whyChoose": {
+			"title": "Why Choose Us",
+			"expenses": {
+				"title": "Full control over expenses",
+				"desc": "Find out if your team trip is within budget before you start booking."
+			},
+			"rates": {
+				"title": "Lower than public rates",
+				"desc": "We expertly negotiate on your behalf everything from accommodation to meeting rooms."
+			},
+			"support": {
+				"title": "Dedicated 1-on-1 support",
+				"desc": "We optimize our resources to ensure a dedicated expert is with you every step of the way."
+			},
+			"time": {
+				"title": "80% of planning time saved",
+				"desc": "We streamline the offsite planning process and turn it into an effortless experience."
+			},
+			"policy": {
+				"title": "Every booking within policy",
+				"desc": "Set a company policy and receive approval requests right in your inbox."
+			},
+			"allInOne": {
+				"title": "Everything in the same place",
+				"desc": "Transport, accommodation, venues, activities, transfers, meals, swag, visas—all covered."
+			}
+		},
+		"finalCta": {
+			"title": "Start saving on your next company retreat",
+			"subtitle": "Instantly save 80% of the time you spend organizing team trips, offsite meetings, and company retreats. We Offsite transforms complex offsite planning into an easy experience.",
+			"cta": "Schedule a call"
+		}
+	},
+	"benefits": {
+		"meta": {
+			"title": "Benefits — We Offsite",
+			"description": "Smart venue search, 100% policy compliance, transparent budgets, exclusive rates, and dedicated end-to-end support for corporate retreats."
+		},
+		"cta": "Schedule a call",
+		"hero": {
+			"label": "Smart search for offsite venues",
+			"title": "A cost-effective team retreat starts with the right choices",
+			"subtitle": "Compare travel costs for each candidate offsite location, and learn which dates are the cheapest for your team retreat to take place."
+		},
+		"features": {
+			"ariaLabel": "Platform benefits",
+			"search": {
+				"title": "Smart search for offsite venues",
+				"desc": "Compare travel costs for each candidate offsite location, and learn which dates are the cheapest for your team retreat to take place."
+			},
+			"compliance": {
+				"title": "Achieve 100% compliance on your offsite trip",
+				"desc": "Ensure your employees book their offsite travel according to company policy. Easily verify the status of each offsite trip and get an overview of costs before booking your team's travel, ensuring you stay within budget."
+			},
+			"venues": {
+				"title": "Simplified offsite venue sourcing",
+				"desc": "Easily find the perfect venue for your corporate retreat. From skyscrapers to secluded cabins in the countryside or castle stays—let us know your requirements, and we will prepare a selection of venues after negotiating with suppliers to present you with the best places for your team offsite."
+			}
+		},
+		"expense": {
+			"title": "Transparent offsite expense control",
+			"desc": "Master your offsite budget and maximize savings. Receive a full budget before choosing an offsite location, including travel, accommodation, meeting venues, meals, activities, and transfers. Easily compare costs with your budget ensuring cost-effective team offsites and maximizing your corporate travel savings."
+		},
+		"stats": {
+			"stat1Value": "100",
+			"stat1Suffix": "%",
+			"stat1Label": "Company offsites booked within policy",
+			"stat2Value": "92",
+			"stat2Suffix": "%",
+			"stat2Label": "Corporate retreats for which we successfully negotiate lower rates",
+			"stat3Value": "80",
+			"stat3Suffix": "%",
+			"stat3Label": "Average time you save planning offsite trips",
+			"stat4Value": "0",
+			"stat4Suffix": "",
+			"stat4Label": "Reasons not to bring your team together!"
+		},
+		"rates": {
+			"title": "Enjoy exclusive negotiated rates",
+			"desc": "Benefit from lower-than-public rates, from discounted rooms to waived resort fees. Our expert team negotiates on your behalf so you can enjoy the most competitive rates and maximize your budget when booking your team offsite."
+		},
+		"agenda": {
+			"title": "Create and share your team retreat agenda",
+			"desc": "Easily create a program for your team building retreat or company offsite and share it with your team so everyone stays informed. Keep things flexible with our tool: edit or remove events, and your team will see updates in real time."
+		},
+		"support": {
+			"label": "Dedicated end-to-end support",
+			"title": "Get personalized assistance at all times",
+			"changes": {
+				"title": "Changes and cancellations",
+				"desc": "Let us help if your plans change."
+			},
+			"travel": {
+				"title": "Day-of-travel assistance",
+				"desc": "Contact our team if you have any issues on the travel day."
+			},
+			"accommodation": {
+				"title": "Accommodation management",
+				"desc": "We negotiate rates and contract terms with venues."
+			},
+			"advice": {
+				"title": "Expert planning advice",
+				"desc": "Reach out to us anytime and benefit from our team's expertise on company offsite planning."
+			}
+		}
 	},
 	"hero": {
 		"title": "Save 80% of your time planning your company retreat or event",
@@ -58,6 +221,13 @@
 	"caseStudies": {
 		"title": "Case studies",
 		"subtitle": "Companies that trust us for their corporate retreats",
+		"label": "Case studies",
+		"pageTitle": "Real retreats, real results",
+		"pageSubtitle": "Discover how distributed teams around the world plan unforgettable offsites with We Offsite — from Park City to Phuket, Barcelona to the Algarve.",
+		"meta": {
+			"title": "Case Studies — We Offsite",
+			"description": "Corporate retreat success stories: Graphite, Kayzen, Paperlike, Incident.io, OPTI Digital, Balena, and Definely."
+		},
 		"viewFull": "View full case"
 	},
 	"calendly": {

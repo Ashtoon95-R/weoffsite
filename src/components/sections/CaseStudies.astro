@@ -5,24 +5,35 @@ import { getCaseStudySlug } from '../../utils/case-studies';
 
 interface Props {
 	locale: Locale;
+	hideHeader?: boolean;
 }
 
-const { locale } = Astro.props;
+const { locale, hideHeader = false } = Astro.props;
 const t = getTranslations(locale);
-const studies = await getCollection('case-studies', ({ data }) => data.lang === locale);
+const studies = (await getCollection('case-studies', ({ data }) => data.lang === locale)).sort(
+	(a, b) => a.data.order - b.data.order,
+);
 const basePath = `/${locale}/case-studies`;
 ---
 
-<section id="case-studies" class="bg-background py-16 md:py-24" aria-labelledby="case-studies-title">
+<section
+	id="case-studies"
+	class="bg-background py-16 md:py-24"
+	aria-labelledby={hideHeader ? undefined : 'case-studies-title'}
+>
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<div class="max-w-2xl">
-			<h2 id="case-studies-title" class="font-heading text-3xl font-bold tracking-tight text-primary md:text-4xl">
-				{t.caseStudies.title}
-			</h2>
-			<p class="mt-4 text-lg text-secondary">{t.caseStudies.subtitle}</p>
-		</div>
+		{
+			!hideHeader && (
+				<div class="max-w-2xl">
+					<h2 id="case-studies-title" class="font-heading text-3xl font-bold tracking-tight text-primary md:text-4xl">
+						{t.caseStudies.title}
+					</h2>
+					<p class="mt-4 text-lg text-secondary">{t.caseStudies.subtitle}</p>
+				</div>
+			)
+		}
 
-		<div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+		<div class:list={['grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3', !hideHeader && 'mt-12']}>
 			{
 				studies.map((study) => (
 					<article class="group flex cursor-pointer flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
@@ -50,11 +61,12 @@ const basePath = `/${locale}/case-studies`;
 									<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
 									<circle cx="12" cy="10" r="3"></circle>
 								</svg>
-								<span>
-									{study.data.company} — {study.data.location}
-								</span>
+								<span>{study.data.location}</span>
 							</div>
-							<blockquote class="mt-4 flex-1 text-sm leading-relaxed text-text">
+							<h3 class="mt-3 font-heading text-lg font-semibold text-primary group-hover:text-accent transition-colors duration-200">
+								{study.data.title}
+							</h3>
+							<blockquote class="mt-3 flex-1 text-sm leading-relaxed text-text">
 								<p class="line-clamp-4">"{study.data.quote}"</p>
 							</blockquote>
 							<a

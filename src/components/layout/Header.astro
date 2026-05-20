@@ -1,7 +1,6 @@
 ---
-import { getAbsoluteLocaleUrl } from 'astro:i18n';
 import Button from '../ui/Button.astro';
-import { getTranslations, type Locale } from '../../i18n';
+import { getLocaleSwitchUrl, getTranslations, type Locale } from '../../i18n';
 
 interface Props {
 	locale: Locale;
@@ -10,14 +9,17 @@ interface Props {
 const { locale } = Astro.props;
 const t = getTranslations(locale);
 
-const pathWithoutLocale = Astro.url.pathname.replace(/^\/(en|es)/, '') || '/';
-const enUrl = getAbsoluteLocaleUrl('en', pathWithoutLocale);
-const esUrl = getAbsoluteLocaleUrl('es', pathWithoutLocale);
+const enUrl = getLocaleSwitchUrl('en', Astro.url.pathname, Astro.url.hash);
+const esUrl = getLocaleSwitchUrl('es', Astro.url.pathname, Astro.url.hash);
 const homeUrl = locale === 'es' ? '/es/' : '/en/';
+const aboutUrl = `${homeUrl}about`;
+const benefitsUrl = `${homeUrl}benefits`;
 
 const navLinks = [
-	{ label: t.nav.services, href: '#services' },
-	{ label: t.nav.caseStudies, href: '#case-studies' },
+	{ label: t.nav.about, href: aboutUrl },
+	{ label: t.nav.benefits, href: benefitsUrl },
+	{ label: t.nav.services, href: `${homeUrl}#services` },
+	{ label: t.nav.caseStudies, href: `${homeUrl}case-studies` },
 	{ label: t.nav.contact, href: '#calendly-section' },
 ];
 ---
@@ -25,12 +27,14 @@ const navLinks = [
 <header
 	id="site-header"
 	class="sticky top-0 z-50 border-b border-transparent bg-background/95 backdrop-blur-sm transition-all duration-200"
+	data-open-menu={t.common.openMenu}
+	data-close-menu={t.common.closeMenu}
 >
 	<div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
 		<a
 			href={homeUrl}
 			class="cursor-pointer font-heading text-xl font-bold tracking-tight text-primary transition-colors duration-200 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
-			aria-label="We Offsite"
+			aria-label={t.common.brandName}
 		>
 			<svg
 				width="140"
@@ -47,7 +51,7 @@ const navLinks = [
 			</svg>
 		</a>
 
-		<nav class="hidden items-center gap-8 md:flex" aria-label="Main navigation">
+		<nav class="hidden items-center gap-8 md:flex" aria-label={t.common.mainNav}>
 			{
 				navLinks.map((link) => (
 					<a
@@ -61,7 +65,7 @@ const navLinks = [
 		</nav>
 
 		<div class="hidden items-center gap-4 md:flex">
-			<div class="flex items-center gap-1 rounded-lg border border-secondary/20 p-1" role="group" aria-label="Language selector">
+			<div class="flex items-center gap-1 rounded-lg border border-secondary/20 p-1" role="group" aria-label={t.common.languageSelector}>
 				<a
 					href={esUrl}
 					class:list={[
@@ -92,7 +96,7 @@ const navLinks = [
 			class="cursor-pointer rounded-lg p-2 text-primary transition-colors duration-200 hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 md:hidden"
 			aria-expanded="false"
 			aria-controls="mobile-menu"
-			aria-label="Open menu"
+			aria-label={t.common.openMenu}
 		>
 			<svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 				<line x1="4" x2="20" y1="12" y2="12"></line>
@@ -107,7 +111,7 @@ const navLinks = [
 	</div>
 
 	<div id="mobile-menu" class="hidden border-t border-secondary/10 bg-background md:hidden" aria-hidden="true">
-		<nav class="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6" aria-label="Mobile navigation">
+		<nav class="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6" aria-label={t.common.mobileNav}>
 			{
 				navLinks.map((link) => (
 					<a
@@ -140,7 +144,7 @@ const navLinks = [
 					EN
 				</a>
 			</div>
-			<Button href="#calendly-section" class="mt-4 w-full">{t.cta.primary}</Button>
+			<Button href="#calendly-section" class="mt-4 w-full">{t.nav.cta}</Button>
 		</nav>
 	</div>
 </header>
@@ -152,11 +156,14 @@ const navLinks = [
 	const iconMenu = document.getElementById('icon-menu');
 	const iconClose = document.getElementById('icon-close');
 
+	const openMenuLabel = header?.dataset.openMenu ?? 'Open menu';
+	const closeMenuLabel = header?.dataset.closeMenu ?? 'Close menu';
+
 	function closeMenu() {
 		menu?.classList.add('hidden');
 		menu?.setAttribute('aria-hidden', 'true');
 		toggle?.setAttribute('aria-expanded', 'false');
-		toggle?.setAttribute('aria-label', 'Open menu');
+		toggle?.setAttribute('aria-label', openMenuLabel);
 		iconMenu?.classList.remove('hidden');
 		iconClose?.classList.add('hidden');
 	}
@@ -165,7 +172,7 @@ const navLinks = [
 		menu?.classList.remove('hidden');
 		menu?.setAttribute('aria-hidden', 'false');
 		toggle?.setAttribute('aria-expanded', 'true');
-		toggle?.setAttribute('aria-label', 'Close menu');
+		toggle?.setAttribute('aria-label', closeMenuLabel);
 		iconMenu?.classList.add('hidden');
 		iconClose?.classList.remove('hidden');
 	}
