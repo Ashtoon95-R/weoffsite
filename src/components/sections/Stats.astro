@@ -1,6 +1,5 @@
 ---
-import type { Locale } from '../../i18n';
-import { getTranslations } from '../../i18n';
+import { getTranslations, type Locale } from '../../i18n';
 
 interface Props {
 	locale: Locale;
@@ -10,55 +9,27 @@ const { locale } = Astro.props;
 const t = getTranslations(locale);
 
 const stats = [
-	{
-		value:  t.stats.stat1Value,
-		suffix: t.stats.stat1Suffix,
-		label:  t.stats.stat1Label,
-	},
-	{
-		value:  t.stats.stat2Value,
-		suffix: t.stats.stat2Suffix,
-		label:  t.stats.stat2Label,
-	},
-	{
-		value:  t.stats.stat3Value,
-		suffix: t.stats.stat3Suffix,
-		label:  t.stats.stat3Label,
-	},
+	{ value: t.stats.stat1Value, suffix: t.stats.stat1Suffix, label: t.stats.stat1Label },
+	{ value: t.stats.stat2Value, suffix: t.stats.stat2Suffix, label: t.stats.stat2Label },
+	{ value: t.stats.stat3Value, suffix: t.stats.stat3Suffix, label: t.stats.stat3Label },
 ];
 ---
 
-<section class="noise bg-ink py-20 lg:py-28">
-	<div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-
-		<!-- Label -->
-		<p class="reveal mb-14 text-center font-mono text-[11px] uppercase tracking-widest text-mist">
+<section class="bg-primary py-16 md:py-24" aria-labelledby="stats-label">
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<p id="stats-label" class="mb-14 text-center text-sm font-semibold uppercase tracking-widest text-white/70">
 			{t.stats.label}
 		</p>
 
-		<!-- Stats row -->
-		<div class="grid grid-cols-1 divide-y divide-gold/20 md:grid-cols-3 md:divide-x md:divide-y-0">
+		<div class="grid grid-cols-1 divide-y divide-white/10 md:grid-cols-3 md:divide-x md:divide-y-0">
 			{
-				stats.map((stat, i) => (
-					<div
-						class="reveal py-10 text-center md:px-8 md:py-0"
-						data-delay={i * 120}
-					>
-						<!-- Big number -->
-						<p
-							class="font-display font-bold leading-none text-gold"
-							style="font-size: clamp(72px, 10vw, 120px);"
-						>
-							<span
-								data-countup={stat.value}
-								data-suffix={stat.suffix}
-							>0{stat.suffix}</span>
+				stats.map((stat) => (
+					<div class="py-10 text-center md:px-8 md:py-0">
+						<p class="font-heading text-5xl font-bold leading-none text-white md:text-6xl lg:text-7xl">
+							{stat.value}
+							{stat.suffix}
 						</p>
-
-						<!-- Label -->
-						<p class="mt-4 font-mono text-xs uppercase tracking-widest text-mist/70">
-							{stat.label}
-						</p>
+						<p class="mt-4 text-sm font-medium uppercase tracking-widest text-white/70">{stat.label}</p>
 					</div>
 				))
 			}

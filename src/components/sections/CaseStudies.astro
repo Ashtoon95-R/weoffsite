@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import type { Locale } from '../../i18n';
-import { getTranslations } from '../../i18n';
+import { getTranslations, type Locale } from '../../i18n';
 import { getCaseStudySlug } from '../../utils/case-studies';
 
 interface Props {
@@ -10,131 +9,88 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = getTranslations(locale);
-
 const studies = await getCollection('case-studies', ({ data }) => data.lang === locale);
-studies.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-
-// Grid layout rules by index:
-// 0 → full width (6 cols)
-// 1,2 → half width (3 cols each)
-// 3,4,5 → third width (2 cols each)
-const spanClass = (i: number) => {
-	if (i === 0) return 'case-col-full';
-	if (i <= 2)  return 'case-col-half';
-	return 'case-col-third';
-};
-
-const imageHeightClass = (i: number) => {
-	if (i === 0) return 'h-72 md:h-96';
-	if (i <= 2)  return 'h-56 md:h-72';
-	return 'h-48 md:h-56';
-};
+const basePath = `/${locale}/case-studies`;
 ---
 
-<section id="case-studies" class="bg-parchment py-20 lg:py-28">
-	<div class="mx-auto max-w-7xl px-6 lg:px-8">
-
-		<!-- Section header -->
-		<div class="reveal mb-14">
-			<p class="font-mono text-[11px] uppercase tracking-widest text-gold">
-				{t.caseStudies.label}
-			</p>
-			<h2 class="mt-3 font-display text-[48px] font-bold leading-[1.05] text-ink lg:text-[72px]">
+<section id="case-studies" class="bg-background py-16 md:py-24" aria-labelledby="case-studies-title">
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div class="max-w-2xl">
+			<h2 id="case-studies-title" class="font-heading text-3xl font-bold tracking-tight text-primary md:text-4xl">
 				{t.caseStudies.title}
 			</h2>
+			<p class="mt-4 text-lg text-secondary">{t.caseStudies.subtitle}</p>
 		</div>
 
-		<!-- Magazine-style grid -->
-		<div class="cases-grid">
+		<div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 			{
-				studies.map((study, i) => {
-					const slug = getCaseStudySlug(study.id);
-					const dest = study.data.location.toUpperCase();
-					const coords = study.data.coordinates ?? '';
-					const caseUrl = `/${locale}/case-studies/${slug}`;
-
-					return (
-						<article class={`reveal cases-card group ${spanClass(i)}`} data-delay={i * 80}>
-							<!-- Image area with overlay -->
-							<a
-								href={caseUrl}
-								class="block overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-								aria-label={`${study.data.company} — ${study.data.location}`}
-							>
-								<div class={`relative ${imageHeightClass(i)} overflow-hidden`}>
-									<!-- Gradient placeholder (fallback for missing images) -->
-									<div class="absolute inset-0 bg-gradient-to-br from-forest/80 to-ink transition-transform duration-500 ease-out group-hover:scale-[1.04]">
-										{study.data.coverImage && (
-											<img
-												src={study.data.coverImage}
-												alt={study.data.title}
-												class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-												loading="lazy"
-												width="800"
-												height="500"
-												onerror="this.style.display='none'"
-											/>
-										)}
-									</div>
-									<!-- Bottom gradient overlay → parchment -->
-									<div class="pointer-events-none absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-parchment to-transparent" />
-								</div>
-							</a>
-
-							<!-- Card content -->
-							<div class="pt-4">
-								{coords && (
-									<p class="font-mono text-[10px] leading-none text-mist">
-										{coords}
-									</p>
-								)}
-								<p class="mt-1 font-mono text-[11px] uppercase tracking-widest text-gold">
-									{dest}
-								</p>
-								<h3 class="mt-2 font-display text-2xl font-bold text-ink">
-									{study.data.company}
-								</h3>
-								<blockquote class="mt-2 line-clamp-2 font-body text-[15px] italic leading-relaxed text-ink/65">
-									"{study.data.quote}"
-								</blockquote>
-								<p class="mt-2 font-mono text-[11px] uppercase tracking-widest text-mist/70">
-									— {study.data.author}, {study.data.authorRole}
-								</p>
-
-								<a
-									href={caseUrl}
-									class="mt-4 inline-block cursor-pointer font-mono text-[11px] uppercase tracking-widest text-rust transition-colors duration-200 hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+				studies.map((study) => (
+					<article class="group flex cursor-pointer flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+						<div
+							class="aspect-[16/10] bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/20"
+							style={`background-image: url(${study.data.coverImage}); background-size: cover; background-position: center;`}
+							role="img"
+							aria-label={`${study.data.company} — ${study.data.location}`}
+						></div>
+						<div class="flex flex-1 flex-col p-6">
+							<div class="flex items-center gap-1.5 text-sm font-medium text-secondary">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="shrink-0 text-accent"
+									aria-hidden="true"
 								>
-									{t.caseStudies.viewFull}
-								</a>
+									<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
+									<circle cx="12" cy="10" r="3"></circle>
+								</svg>
+								<span>
+									{study.data.company} — {study.data.location}
+								</span>
 							</div>
-						</article>
-					);
-				})
+							<blockquote class="mt-4 flex-1 text-sm leading-relaxed text-text">
+								<p class="line-clamp-4">"{study.data.quote}"</p>
+							</blockquote>
+							<a
+								href={`${basePath}/${getCaseStudySlug(study.id)}`}
+								class="mt-5 inline-flex cursor-pointer items-center gap-1 text-sm font-semibold text-accent transition-colors duration-200 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+							>
+								{t.caseStudies.viewFull}
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									aria-hidden="true"
+								>
+									<path d="M5 12h14"></path>
+									<path d="m12 5 7 7-7 7"></path>
+								</svg>
+							</a>
+						</div>
+					</article>
+				))
 			}
 		</div>
 	</div>
 </section>
 
 <style>
-	.cases-grid {
-		display: grid;
-		grid-template-columns: repeat(6, 1fr);
-		gap: 2rem;
-	}
-
-	.case-col-full  { grid-column: span 6; }
-	.case-col-half  { grid-column: span 6; }
-	.case-col-third { grid-column: span 6; }
-
-	@media (min-width: 768px) {
-		.case-col-half  { grid-column: span 3; }
-		.case-col-third { grid-column: span 3; }
-	}
-
-	@media (min-width: 1024px) {
-		.case-col-full  { grid-column: span 6; }
-		.case-col-half  { grid-column: span 3; }
-		.case-col-third { grid-column: span 2; }
+	.line-clamp-4 {
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
 	}
 </style>

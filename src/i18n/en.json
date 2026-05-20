@@ -10,52 +10,26 @@
 		"cta": "Book a call"
 	},
 	"hero": {
-		"eyebrow": "CORPORATE RETREAT SPECIALISTS · EST. 2022",
-		"title": "Where great teams go to become greater.",
-		"subtitle": "We Offsite helps distributed companies plan extraordinary team retreats, handling every detail so your team just shows up and connects.",
-		"ctaPrimary": "Schedule a call →",
-		"ctaSecondary": "View case studies",
-		"stat1Value": "80",
-		"stat1Suffix": "%",
-		"stat1Label": "time saved on planning",
-		"stat2Value": "200",
-		"stat2Suffix": "+",
-		"stat2Label": "events planned",
-		"stat3Value": "4.9",
-		"stat3Suffix": "★",
-		"stat3Label": "average client rating"
+		"title": "Save 80% of your time planning your company retreat or event",
+		"subtitle": "At We Offsite we are event planning experts. We help remote companies organize unique team retreats, optimizing costs and logistics.",
+		"ctaPrimary": "Book a call",
+		"ctaSecondary": "View case studies"
 	},
 	"logoBar": {
 		"prefix": "Trusted by teams at —"
 	},
 	"howItWorks": {
-		"label": "THE PROCESS",
-		"title": "From brief to boardwalk in 6 weeks.",
-		"step1Title": "Discovery Call",
+		"label": "How it works",
+		"title": "From brief to offsite in 6 weeks",
+		"step1Title": "Discovery call",
 		"step1Desc": "We learn your team's goals, culture, and budget.",
-		"step2Title": "Custom Proposal",
-		"step2Desc": "Venues, activities, logistics — tailored to your needs.",
-		"step3Title": "You Show Up",
+		"step2Title": "Custom proposal",
+		"step2Desc": "Venues, activities, and logistics tailored to your needs.",
+		"step3Title": "You show up",
 		"step3Desc": "We handle flights, hotels, and the full agenda. You just connect."
 	},
-	"services": {
-		"title": "Three ways we can help you.",
-		"popular": "MOST POPULAR",
-		"meetings": {
-			"title": "Strategic Meetings",
-			"desc": "Find the ideal environment for productive work sessions and key decision-making."
-		},
-		"retreats": {
-			"title": "Company Retreats",
-			"desc": "Kick-offs designed to strengthen the corporate culture of remote teams."
-		},
-		"logistics": {
-			"title": "Full Logistics",
-			"desc": "We handle everything: from flights and hotels to technical equipment and teambuilding."
-		}
-	},
 	"stats": {
-		"label": "BY THE NUMBERS",
+		"label": "By the numbers",
 		"stat1Value": "80",
 		"stat1Suffix": "%",
 		"stat1Label": "time saved on planning",
@@ -66,16 +40,29 @@
 		"stat3Suffix": "★",
 		"stat3Label": "average client rating"
 	},
+	"services": {
+		"title": "Event planning for modern companies",
+		"meetings": {
+			"title": "Strategic Meetings",
+			"desc": "Find the ideal environment for productive work sessions."
+		},
+		"retreats": {
+			"title": "Annual Retreats",
+			"desc": "Kick-offs designed to strengthen remote corporate culture."
+		},
+		"logistics": {
+			"title": "Full Logistics",
+			"desc": "We handle everything: from flights and hotels to technical equipment."
+		}
+	},
 	"caseStudies": {
-		"label": "EXPEDITIONS · 2022–2025",
-		"title": "Every offsite is a story.",
+		"title": "Case studies",
 		"subtitle": "Companies that trust us for their corporate retreats",
-		"viewFull": "VIEW CASE →"
+		"viewFull": "View full case"
 	},
 	"calendly": {
-		"eyebrow": "NEXT STEP",
-		"title": "Let's plan your next expedition.",
-		"subtitle": "30-minute call. No commitment. Free proposal delivered in 48h.",
+		"eyebrow": "EVENT MANAGEMENT",
+		"title": "Book a call and organize your retreat hassle-free",
 		"placeholder": "Calendly embed — https://calendly.com/weoffsite"
 	},
 	"cta": {
@@ -85,10 +72,8 @@
 		"button": "Book a call"
 	},
 	"footer": {
-		"tagline": "Corporate retreat experts · Since 2022",
-		"legal": "© 2025 We Offsite. All rights reserved.",
-		"email1": "hello@weoffsite.com",
-		"email2": "support@weoffsite.com"
+		"tagline": "Corporate retreat experts",
+		"legal": "© 2025 We Offsite. All rights reserved."
 	},
 	"caseStudyDetail": {
 		"backLink": "Back to case studies",

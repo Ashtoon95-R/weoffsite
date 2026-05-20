@@ -9,15 +9,11 @@ import Stats from '../../components/sections/Stats.astro';
 import CalendlySection from '../../components/sections/CalendlySection.astro';
 import { getTranslations } from '../../i18n';
 
-const locale = 'en' as const;
+const locale = 'en';
 const t = getTranslations(locale);
 ---
 
-<Layout
-	title={t.meta.title}
-	description={t.meta.description}
-	lang={locale}
->
+<Layout title={t.meta.title} description={t.meta.description} lang={locale}>
 	<Hero locale={locale} />
 	<LogoBar locale={locale} />
 	<CaseStudies locale={locale} />

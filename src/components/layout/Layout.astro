@@ -45,14 +45,6 @@ const ogImageUrl = new URL(ogImage, Astro.site).href;
 		<meta property="og:image" content={ogImageUrl} />
 		<meta property="og:url" content={canonicalUrl} />
 		<meta property="og:locale" content={ogLocale} />
-
-		<!-- Google Fonts: Playfair Display + DM Sans + Space Mono -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Space+Mono:wght@400;700&display=swap"
-		/>
 	</head>
 	<body>
 		<Header locale={lang} />
@@ -60,62 +52,5 @@ const ogImageUrl = new URL(ogImage, Astro.site).href;
 			<slot />
 		</main>
 		<Footer locale={lang} />
-
-		<!-- Global: reveal on scroll + count-up animations -->
-		<script>
-			// Reveal on scroll
-			const revealEls = document.querySelectorAll<HTMLElement>('.reveal');
-			if ('IntersectionObserver' in window && revealEls.length) {
-				const revealObs = new IntersectionObserver(
-					(entries) => {
-						entries.forEach((entry) => {
-							if (entry.isIntersecting) {
-								const el = entry.target as HTMLElement;
-								const delay = el.dataset.delay ? parseInt(el.dataset.delay) : 0;
-								setTimeout(() => el.classList.add('is-visible'), delay);
-								revealObs.unobserve(el);
-							}
-						});
-					},
-					{ threshold: 0.1 }
-				);
-				revealEls.forEach((el) => revealObs.observe(el));
-			} else {
-				revealEls.forEach((el) => el.classList.add('is-visible'));
-			}
-
-			// Count-up animation
-			const countEls = document.querySelectorAll<HTMLElement>('[data-countup]');
-			if ('IntersectionObserver' in window && countEls.length) {
-				const countObs = new IntersectionObserver(
-					(entries) => {
-						entries.forEach((entry) => {
-							if (!entry.isIntersecting) return;
-							const el = entry.target as HTMLElement;
-							const target = parseFloat(el.dataset.countup ?? '0');
-							const suffix = el.dataset.suffix ?? '';
-							const duration = 1500;
-							const isDecimal = target % 1 !== 0;
-							const start = performance.now();
-
-							function tick(now: number) {
-								const progress = Math.min((now - start) / duration, 1);
-								const eased = 1 - Math.pow(1 - progress, 3);
-								const value = isDecimal
-									? (target * eased).toFixed(1)
-									: Math.round(target * eased).toString();
-								el.textContent = value + suffix;
-								if (progress < 1) requestAnimationFrame(tick);
-							}
-
-							requestAnimationFrame(tick);
-							countObs.unobserve(el);
-						});
-					},
-					{ threshold: 0.4 }
-				);
-				countEls.forEach((el) => countObs.observe(el));
-			}
-		</script>
 	</body>
 </html>

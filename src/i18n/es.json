@@ -10,55 +10,29 @@
 		"cta": "Agenda una llamada"
 	},
 	"hero": {
-		"eyebrow": "ESPECIALISTAS EN RETIROS CORPORATIVOS · EST. 2022",
-		"title": "Donde los grandes equipos van a ser mejores.",
-		"subtitle": "We Offsite ayuda a empresas distribuidas a planificar retiros de equipo extraordinarios, gestionando cada detalle para que tu equipo solo tenga que aparecer y conectar.",
-		"ctaPrimary": "Agenda una llamada →",
-		"ctaSecondary": "Ver casos de éxito",
-		"stat1Value": "80",
-		"stat1Suffix": "%",
-		"stat1Label": "tiempo ahorrado en planificación",
-		"stat2Value": "200",
-		"stat2Suffix": "+",
-		"stat2Label": "eventos planificados",
-		"stat3Value": "4.9",
-		"stat3Suffix": "★",
-		"stat3Label": "valoración media de clientes"
+		"title": "Ahorra un 80% de tiempo planificando tu retiro de empresa o evento",
+		"subtitle": "En We Offsite somos expertos en la planificación de eventos. Ayudamos a empresas remotas a organizar retiros de equipo únicos, optimizando costes y logística.",
+		"ctaPrimary": "Agenda una llamada",
+		"ctaSecondary": "Ver casos de éxito"
 	},
 	"logoBar": {
-		"prefix": "Confían en nosotros —"
+		"prefix": "Equipos que confían en nosotros —"
 	},
 	"howItWorks": {
-		"label": "EL PROCESO",
-		"title": "Del briefing al retiro en 6 semanas.",
+		"label": "Cómo funciona",
+		"title": "Del briefing al retiro en 6 semanas",
 		"step1Title": "Llamada de descubrimiento",
-		"step1Desc": "Conocemos los objetivos, la cultura y el presupuesto de tu equipo.",
-		"step2Title": "Propuesta personalizada",
-		"step2Desc": "Venues, actividades y logística adaptados a vuestras necesidades.",
-		"step3Title": "Tú solo apareces",
-		"step3Desc": "Nosotros gestionamos vuelos, hoteles y agenda. Vosotros conectáis."
-	},
-	"services": {
-		"title": "Tres formas en las que podemos ayudarte.",
-		"popular": "MÁS POPULAR",
-		"meetings": {
-			"title": "Reuniones Estratégicas",
-			"desc": "Encuentra el entorno ideal para sesiones de trabajo productivas y toma de decisiones."
-		},
-		"retreats": {
-			"title": "Retiros Anuales",
-			"desc": "Kick-offs diseñados para fortalecer la cultura corporativa de equipos remotos."
-		},
-		"logistics": {
-			"title": "Logística Integral",
-			"desc": "Nos encargamos de todo: desde vuelos y hoteles hasta material técnico y teambuilding."
-		}
+		"step1Desc": "Conocemos los objetivos, cultura y presupuesto de tu equipo.",
+		"step2Title": "Propuesta a medida",
+		"step2Desc": "Espacios, actividades y logística adaptados a vuestras necesidades.",
+		"step3Title": "Vosotros llegáis",
+		"step3Desc": "Nos encargamos de vuelos, hoteles y agenda completa. Vosotros solo conectáis."
 	},
 	"stats": {
-		"label": "EN NÚMEROS",
+		"label": "En cifras",
 		"stat1Value": "80",
 		"stat1Suffix": "%",
-		"stat1Label": "tiempo ahorrado en planificación",
+		"stat1Label": "de tiempo ahorrado en planificación",
 		"stat2Value": "200",
 		"stat2Suffix": "+",
 		"stat2Label": "eventos planificados desde 2022",
@@ -66,16 +40,29 @@
 		"stat3Suffix": "★",
 		"stat3Label": "valoración media de clientes"
 	},
+	"services": {
+		"title": "Planificación de eventos para empresas modernas",
+		"meetings": {
+			"title": "Reuniones Estratégicas",
+			"desc": "Encuentra el entorno ideal para sesiones de trabajo productivas."
+		},
+		"retreats": {
+			"title": "Retiros Anuales",
+			"desc": "Kick-offs diseñados para fortalecer la cultura corporativa remota."
+		},
+		"logistics": {
+			"title": "Logística Integral",
+			"desc": "Nos encargamos de todo: desde vuelos y hoteles hasta material técnico."
+		}
+	},
 	"caseStudies": {
-		"label": "EXPEDICIONES · 2022–2025",
-		"title": "Cada offsite es una historia.",
+		"title": "Casos de éxito",
 		"subtitle": "Empresas que confían en nosotros para sus retiros corporativos",
-		"viewFull": "VER CASO →"
+		"viewFull": "Ver caso completo"
 	},
 	"calendly": {
-		"eyebrow": "EL SIGUIENTE PASO",
-		"title": "Planifiquemos tu próxima expedición.",
-		"subtitle": "30 minutos de llamada. Sin compromiso. Propuesta gratuita en 48h.",
+		"eyebrow": "GESTIÓN DE EVENTOS",
+		"title": "Agenda una llamada y organiza tu retiro sin complicaciones",
 		"placeholder": "Calendly embed — https://calendly.com/weoffsite"
 	},
 	"cta": {
@@ -85,10 +72,8 @@
 		"button": "Agenda una llamada"
 	},
 	"footer": {
-		"tagline": "Expertos en retiros corporativos · Desde 2022",
-		"legal": "© 2025 We Offsite. Todos los derechos reservados.",
-		"email1": "hola@weoffsite.com",
-		"email2": "soporte@weoffsite.com"
+		"tagline": "Expertos en retiros corporativos",
+		"legal": "© 2025 We Offsite. Todos los derechos reservados."
 	},
 	"caseStudyDetail": {
 		"backLink": "Volver a casos de éxito",

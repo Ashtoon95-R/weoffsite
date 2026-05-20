@@ -1,6 +1,5 @@
 ---
-import type { Locale } from '../../i18n';
-import { getTranslations } from '../../i18n';
+import { getTranslations, type Locale } from '../../i18n';
 
 interface Props {
 	locale: Locale;
@@ -16,57 +15,42 @@ const steps = [
 ];
 ---
 
-<section class="noise bg-forest py-20 lg:py-28">
-	<div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-
-		<!-- Section header -->
-		<div class="reveal">
-			<p class="font-mono text-[11px] uppercase tracking-widest text-mist">
-				{t.howItWorks.label}
-			</p>
-			<h2
-				class="mt-4 max-w-lg font-display text-[48px] font-bold leading-[1.05] text-parchment lg:text-[64px]"
-			>
+<section id="how-it-works" class="bg-background py-16 md:py-24" aria-labelledby="how-it-works-title">
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div class="max-w-2xl">
+			<p class="text-sm font-semibold uppercase tracking-widest text-accent">{t.howItWorks.label}</p>
+			<h2 id="how-it-works-title" class="mt-4 font-heading text-3xl font-bold tracking-tight text-primary md:text-4xl">
 				{t.howItWorks.title}
 			</h2>
 		</div>
 
-		<!-- Steps -->
 		<div class="relative mt-16 grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-8">
-
-			<!-- Horizontal connector line (desktop only) -->
 			<div
-				class="pointer-events-none absolute left-0 right-0 top-7 hidden h-px bg-gold/30 lg:block"
+				class="pointer-events-none absolute left-0 right-0 top-7 hidden h-px bg-accent/30 lg:block"
 				aria-hidden="true"
 			>
 			</div>
 
 			{
-				steps.map((step, i) => (
-					<div class="reveal relative" data-delay={i * 120}>
-						<!-- Step number: big background typography -->
+				steps.map((step) => (
+					<article class="relative">
 						<span
-							class="pointer-events-none absolute -left-2 -top-6 select-none font-display text-[64px] font-bold text-gold/15 lg:text-[80px]"
+							class="pointer-events-none absolute -left-2 -top-6 select-none font-heading text-6xl font-bold text-accent/10 lg:text-7xl"
 							aria-hidden="true"
 						>
 							{step.num}
 						</span>
 
 						<div class="relative pt-4">
-							<!-- Gold dot on the connector line -->
 							<div
-								class="mb-5 h-3.5 w-3.5 rounded-full border-2 border-gold bg-forest ring-4 ring-gold/20"
+								class="mb-5 h-3.5 w-3.5 rounded-full border-2 border-accent bg-background ring-4 ring-accent/20"
 								aria-hidden="true"
 							></div>
 
-							<h3 class="font-mono text-[11px] uppercase tracking-widest text-gold">
-								{step.title}
-							</h3>
-							<p class="mt-3 font-body text-[15px] leading-relaxed text-parchment/70">
-								{step.desc}
-							</p>
+							<h3 class="text-sm font-semibold uppercase tracking-widest text-accent">{step.title}</h3>
+							<p class="mt-3 text-base leading-relaxed text-secondary">{step.desc}</p>
 						</div>
-					</div>
+					</article>
 				))
 			}
 		</div>
