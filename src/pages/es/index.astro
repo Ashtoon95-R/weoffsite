@@ -6,6 +6,7 @@ import CaseStudies from '../../components/sections/CaseStudies.astro';
 import HowItWorks from '../../components/sections/HowItWorks.astro';
 import Services from '../../components/sections/Services.astro';
 import Stats from '../../components/sections/Stats.astro';
+import ContactSection from '../../components/sections/contact/ContactSection.astro';
 import CalendlySection from '../../components/sections/CalendlySection.astro';
 import { getTranslations } from '../../i18n';
 
@@ -20,5 +21,6 @@ const t = getTranslations(locale);
 	<HowItWorks locale={locale} />
 	<Services locale={locale} />
 	<Stats locale={locale} />
+	<ContactSection locale={locale} />
 	<CalendlySection locale={locale} />
 </Layout>

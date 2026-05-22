@@ -9,7 +9,6 @@ const caseStudies = defineCollection({
 		quote: z.string(),
 		author: z.string(),
 		authorRole: z.string(),
-		coverImage: z.string(),
 		lang: z.enum(['es', 'en']),
 		date: z.date(),
 		order: z.number().default(99),

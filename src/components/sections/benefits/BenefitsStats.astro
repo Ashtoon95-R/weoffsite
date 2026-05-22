@@ -16,17 +16,20 @@ const stats = [
 ];
 ---
 
-<section class="bg-primary py-16 md:py-24" aria-labelledby="benefits-stats-label">
+<section class="border-y border-black/[0.06] bg-surface py-20 md:py-28" aria-labelledby="benefits-stats-label">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<div class="grid grid-cols-1 divide-y divide-white/10 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-y-0">
+		<div class="reveal grid grid-cols-1 divide-y divide-black/[0.06] sm:grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-y-0">
 			{
-				stats.map((stat) => (
-					<div class="px-4 py-10 text-center lg:py-0">
-						<p class="font-heading text-5xl font-bold leading-none text-white md:text-6xl">
-							{stat.value}
-							<span class="text-accent">{stat.suffix}</span>
+				stats.map((stat, i) => (
+					<div class:list={['px-4 py-10 text-center lg:py-0', i > 0 && 'reveal-delay-1']}>
+						<p
+							class="font-mono text-4xl font-bold tabular-nums leading-none text-espresso md:text-5xl"
+							data-count-up={stat.value}
+							data-count-suffix={stat.suffix}
+						>
+							0{stat.suffix}
 						</p>
-						<p class="mt-4 text-sm font-medium leading-snug text-white/70">{stat.label}</p>
+						<p class="mt-4 text-xs font-medium leading-snug text-muted">{stat.label}</p>
 					</div>
 				))
 			}

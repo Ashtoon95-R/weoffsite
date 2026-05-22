@@ -1,0 +1,34 @@
+---
+# We Offsite — Warm Editorial Luxury
+
+## Skill activo
+`high-end-visual-design` — arquetipo Editorial Luxury (crema, serif, grain, full-bleed)
+
+## JERARQUÍA
+1. Este archivo + tokens en `global.css` → fuente de verdad visual
+2. `design-system/we-offsite/MASTER.md` → desactualizado, pendiente sync
+3. `.agents/skills/` → referencia anti-slop solamente
+
+## PALETA
+- Canvas: `#FDFBF7` | Surface: `#FFFFFF` | Espresso: `#1C1410`
+- Muted: `#787774` | Rust CTA: `#C4522A` | Gold focus: `#C9A962` | Sage labels: `#6B7F6E`
+
+## TIPOGRAFÍA
+- Display: Playfair Display | Body: DM Sans | Labels/stats: Space Mono
+- NO Inter, Lexend, Geist, Satoshi
+
+## MOTION (MOTION_INTENSITY: 5)
+- CSS + Intersection Observer únicamente
+- NO GSAP, NO Framer Motion
+- prefers-reduced-motion: solo opacity
+
+## COMPONENTES
+- Cards: double-bezel (`rounded-2xl` outer, inner calc radius)
+- Buttons: nested pill CTA rust + icon circle
+- Nav: floating island pill
+- Case studies: layout editorial asimétrico + glare hover
+
+## PRE-FLIGHT
+- Lucide SVG, cursor-pointer, 4.5:1 contrast, focus gold 2px
+- loading/empty/error states, min-h-[100dvh], responsive 375/768/1024/1440
+---

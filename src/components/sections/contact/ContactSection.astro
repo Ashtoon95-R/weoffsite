@@ -1,0 +1,48 @@
+---
+import ContactForm from './ContactForm.astro';
+import { getTranslations, type Locale } from '../../../i18n';
+
+interface Props {
+	locale: Locale;
+	showHeader?: boolean;
+	id?: string;
+}
+
+const { locale, showHeader = true, id = 'contact' } = Astro.props;
+const t = getTranslations(locale);
+const homeUrl = locale === 'es' ? '/es/' : '/en/';
+---
+
+<section id={id} class="bg-surface py-20 md:py-28" aria-labelledby={showHeader ? 'contact-section-title' : undefined}>
+	<div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+		{
+			showHeader && (
+				<div class="reveal mb-10 text-center md:mb-12">
+					<p class="chapter-label">{t.contactPage.label}</p>
+					<h2 id="contact-section-title" class="editorial-heading mt-3 text-3xl md:text-4xl">
+						{t.contactPage.title}
+					</h2>
+					<p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+						{t.contactPage.subtitle}
+					</p>
+				</div>
+			)
+		}
+
+		<div class="reveal reveal-delay-1 double-bezel">
+			<div class="double-bezel-inner bg-canvas p-6 md:p-10">
+				<ContactForm locale={locale} />
+			</div>
+		</div>
+
+		<p class="reveal reveal-delay-2 mt-8 text-center text-sm text-muted">
+			{t.contactPage.calendlyHint}
+			<a
+				href={`${homeUrl}#calendly-section`}
+				class="ml-1 cursor-pointer font-semibold text-rust underline-offset-4 transition-colors duration-200 hover:underline"
+			>
+				{t.contactPage.calendlyLink}
+			</a>
+		</p>
+	</div>
+</section>

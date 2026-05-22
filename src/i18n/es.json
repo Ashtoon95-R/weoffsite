@@ -23,6 +23,7 @@
 		"services": "Servicios",
 		"caseStudies": "Casos de Éxito",
 		"contact": "Contacto",
+		"login": "Iniciar sesión",
 		"cta": "Agenda una llamada"
 	},
 	"about": {
@@ -226,14 +227,41 @@
 		"pageSubtitle": "Descubra cómo equipos distribuidos en todo el mundo planifican offsites inolvidables con We Offsite — desde Park City hasta Phuket, Barcelona o el Algarve.",
 		"meta": {
 			"title": "Casos de Éxito — We Offsite",
-			"description": "Historias de éxito en retiros corporativos: Graphite, Kayzen, Paperlike, Incident.io, OPTI Digital, Balena y Definely."
+			"description": "Historias de éxito en retiros corporativos: Kayzen, Paperlike, Incident.io, OPTI Digital, Balena y Definely."
 		},
 		"viewFull": "Ver caso completo"
 	},
 	"calendly": {
 		"eyebrow": "GESTIÓN DE EVENTOS",
 		"title": "Agenda una llamada y organiza tu retiro sin complicaciones",
-		"placeholder": "Calendly embed — https://calendly.com/weoffsite"
+		"iframeTitle": "Selecciona fecha y hora — Calendly"
+	},
+	"contactPage": {
+		"meta": {
+			"title": "Contacto — We Offsite",
+			"description": "Contáctanos y recibe una propuesta gratuita para tu offsite o retiro corporativo."
+		},
+		"label": "Contacto",
+		"title": "Contáctanos y recibe una propuesta gratuita",
+		"subtitle": "Cuéntanos sobre tu equipo y te enviaremos opciones personalizadas para vuestro próximo offsite.",
+		"form": {
+			"name": "Nombre",
+			"namePlaceholder": "Tu nombre",
+			"email": "Correo de trabajo",
+			"emailPlaceholder": "tu@empresa.com",
+			"participants": "Nº de participantes",
+			"participantsPlaceholder": "0+",
+			"dates": "Fechas",
+			"datesPlaceholder": "p. ej. marzo 2026 o flexible",
+			"message": "Mensaje",
+			"messagePlaceholder": "Cuéntanos los objetivos del offsite, preferencias de destino o requisitos especiales…",
+			"submit": "Enviar solicitud",
+			"required": "Campo obligatorio",
+			"success": "¡Gracias! Te responderemos pronto con una propuesta.",
+			"error": "Algo ha fallado. Inténtalo de nuevo o agenda una llamada abajo."
+		},
+		"calendlyHint": "¿Prefieres hablar primero?",
+		"calendlyLink": "Agenda una llamada en Calendly"
 	},
 	"cta": {
 		"eyebrow": "SERVICIOS DE CONSULTORÍA",
@@ -247,6 +275,7 @@
 	},
 	"caseStudyDetail": {
 		"backLink": "Volver a casos de éxito",
+		"ctaHeading": "¿Listo para planificar el vuestro?",
 		"ctaButton": "Agenda una llamada"
 	}
 }

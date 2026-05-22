@@ -9,27 +9,29 @@ const { locale } = Astro.props;
 const t = getTranslations(locale);
 
 const stats = [
-	{ value: t.stats.stat1Value, suffix: t.stats.stat1Suffix, label: t.stats.stat1Label },
-	{ value: t.stats.stat2Value, suffix: t.stats.stat2Suffix, label: t.stats.stat2Label },
-	{ value: t.stats.stat3Value, suffix: t.stats.stat3Suffix, label: t.stats.stat3Label },
+	{ value: t.stats.stat1Value, suffix: t.stats.stat1Suffix, label: t.stats.stat1Label, isDecimal: false },
+	{ value: t.stats.stat2Value, suffix: t.stats.stat2Suffix, label: t.stats.stat2Label, isDecimal: false },
+	{ value: t.stats.stat3Value, suffix: t.stats.stat3Suffix, label: t.stats.stat3Label, isDecimal: true },
 ];
 ---
 
-<section class="bg-primary py-16 md:py-24" aria-labelledby="stats-label">
+<section class="border-y border-black/[0.06] bg-canvas py-20 md:py-28" aria-labelledby="stats-label">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<p id="stats-label" class="mb-14 text-center text-sm font-semibold uppercase tracking-widest text-white/70">
-			{t.stats.label}
-		</p>
+		<p id="stats-label" class="reveal chapter-label text-center">{t.stats.label}</p>
 
-		<div class="grid grid-cols-1 divide-y divide-white/10 md:grid-cols-3 md:divide-x md:divide-y-0">
+		<div class="reveal reveal-delay-1 mt-14 grid grid-cols-1 divide-y divide-black/[0.06] md:grid-cols-3 md:divide-x md:divide-y-0">
 			{
-				stats.map((stat) => (
-					<div class="py-10 text-center md:px-8 md:py-0">
-						<p class="font-heading text-5xl font-bold leading-none text-white md:text-6xl lg:text-7xl">
-							{stat.value}
-							{stat.suffix}
+				stats.map((stat, i) => (
+					<div class:list={['py-10 text-center md:px-8 md:py-0', i === 1 && 'reveal-delay-2']}>
+						<p
+							class="font-mono text-5xl font-bold tabular-nums leading-none text-espresso md:text-6xl lg:text-7xl"
+							data-count-up={stat.value}
+							data-count-suffix={stat.suffix}
+							data-count-duration="1400"
+						>
+							0{stat.suffix}
 						</p>
-						<p class="mt-4 text-sm font-medium uppercase tracking-widest text-white/70">{stat.label}</p>
+						<p class="mt-4 font-mono text-xs uppercase tracking-[0.15em] text-muted">{stat.label}</p>
 					</div>
 				))
 			}

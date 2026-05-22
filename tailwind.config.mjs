@@ -1,3 +1,5 @@
+import typography from '@tailwindcss/typography';
+
 /** @type {import('tailwindcss').Config} */
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -10,6 +12,14 @@ export default {
 		},
 		extend: {
 			colors: {
+				canvas: 'var(--color-canvas)',
+				surface: 'var(--color-surface)',
+				espresso: 'var(--color-espresso)',
+				muted: 'var(--color-muted)',
+				rust: 'var(--color-rust)',
+				gold: 'var(--color-gold)',
+				sage: 'var(--color-sage)',
+				border: 'var(--color-border)',
 				primary: 'var(--color-primary)',
 				secondary: 'var(--color-secondary)',
 				accent: 'var(--color-accent)',
@@ -18,16 +28,21 @@ export default {
 				text: 'var(--color-text)',
 			},
 			fontFamily: {
-				heading: ['Lexend', 'sans-serif'],
-				body: ['"Source Sans 3"', 'sans-serif'],
+				heading: ['"Playfair Display"', 'Georgia', 'serif'],
+				body: ['"DM Sans"', 'system-ui', 'sans-serif'],
+				mono: ['"Space Mono"', 'ui-monospace', 'monospace'],
 			},
 			boxShadow: {
 				sm: 'var(--shadow-sm)',
 				md: 'var(--shadow-md)',
 				lg: 'var(--shadow-lg)',
 				xl: 'var(--shadow-xl)',
+				editorial: '0 20px 40px -15px rgba(28, 20, 16, 0.06)',
+			},
+			transitionTimingFunction: {
+				editorial: 'cubic-bezier(0.32, 0.72, 0, 1)',
 			},
 		},
 	},
-	plugins: [],
+	plugins: [typography],
 };

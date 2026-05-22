@@ -16,7 +16,7 @@ const features = [
 ];
 ---
 
-<section class="bg-white py-16 md:py-24" aria-label={t.benefits.features.ariaLabel}>
+<section class="bg-surface py-20 md:py-28" aria-label={t.benefits.features.ariaLabel}>
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="flex flex-col gap-20 md:gap-28">
 			{
@@ -25,17 +25,17 @@ const features = [
 					return (
 						<article
 							class:list={[
-								'grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16',
+								'reveal grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16',
 								reversed && 'lg:[&>div:first-child]:order-2',
 							]}
 						>
 							<div
-								class="flex aspect-[4/3] items-center justify-center rounded-2xl bg-gradient-to-br from-accent/10 via-background to-primary/5 p-12 shadow-md"
+								class="double-bezel-inner flex aspect-[4/3] items-center justify-center rounded-2xl bg-gradient-to-br from-rust/10 via-canvas to-espresso/5 p-12 shadow-editorial"
 								aria-hidden="true"
 							>
-								<div class="flex h-20 w-20 items-center justify-center rounded-2xl bg-accent/15 text-accent">
+								<div class="flex h-20 w-20 items-center justify-center rounded-2xl bg-rust/15 text-rust">
 									{icon === 'search' && (
-										<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+										<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
 											<circle cx="11" cy="11" r="8"></circle>
 											<path d="m21 21-4.3-4.3"></path>
 											<path d="M11 8v6"></path>
@@ -43,13 +43,13 @@ const features = [
 										</svg>
 									)}
 									{icon === 'shield' && (
-										<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+										<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
 											<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
 											<path d="m9 12 2 2 4-4"></path>
 										</svg>
 									)}
 									{icon === 'building' && (
-										<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+										<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
 											<rect width="16" height="20" x="4" y="2" rx="2" ry="2"></rect>
 											<path d="M9 22v-4h6v4"></path>
 											<path d="M8 6h.01"></path>
@@ -66,8 +66,8 @@ const features = [
 								</div>
 							</div>
 							<div>
-								<h2 class="font-heading text-2xl font-bold tracking-tight text-primary md:text-3xl">{item.title}</h2>
-								<p class="mt-4 text-base leading-relaxed text-secondary md:text-lg">{item.desc}</p>
+								<h2 class="font-heading text-2xl font-bold tracking-tight text-espresso md:text-3xl">{item.title}</h2>
+								<p class="mt-4 text-base leading-relaxed text-muted md:text-lg">{item.desc}</p>
 							</div>
 						</article>
 					);
@@ -75,7 +75,7 @@ const features = [
 			}
 		</div>
 
-		<div class="mt-16 text-center">
+		<div class="reveal mt-16 text-center">
 			<Button href="#calendly-section">{t.benefits.cta}</Button>
 		</div>
 	</div>

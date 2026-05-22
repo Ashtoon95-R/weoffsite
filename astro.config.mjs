@@ -7,6 +7,9 @@ import mdx from '@astrojs/mdx';
 export default defineConfig({
   site: 'https://weoffsite.com',
   integrations: [tailwind(), sitemap(), react(), mdx()],
+  image: {
+    layout: 'constrained',
+  },
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'es'],

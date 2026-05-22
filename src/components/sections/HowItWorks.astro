@@ -15,41 +15,25 @@ const steps = [
 ];
 ---
 
-<section id="how-it-works" class="bg-background py-16 md:py-24" aria-labelledby="how-it-works-title">
+<section id="how-it-works" class="bg-surface py-20 md:py-28" aria-labelledby="how-it-works-title">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<div class="max-w-2xl">
-			<p class="text-sm font-semibold uppercase tracking-widest text-accent">{t.howItWorks.label}</p>
-			<h2 id="how-it-works-title" class="mt-4 font-heading text-3xl font-bold tracking-tight text-primary md:text-4xl">
+		<div class="reveal max-w-2xl">
+			<p class="chapter-label">{t.howItWorks.label}</p>
+			<h2 id="how-it-works-title" class="mt-3 editorial-heading text-3xl md:text-4xl lg:text-5xl">
 				{t.howItWorks.title}
 			</h2>
+			<div class="chapter-divider"></div>
 		</div>
 
-		<div class="relative mt-16 grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-8">
-			<div
-				class="pointer-events-none absolute left-0 right-0 top-7 hidden h-px bg-accent/30 lg:block"
-				aria-hidden="true"
-			>
-			</div>
-
+		<div class="mt-16 grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8">
 			{
-				steps.map((step) => (
-					<article class="relative">
-						<span
-							class="pointer-events-none absolute -left-2 -top-6 select-none font-heading text-6xl font-bold text-accent/10 lg:text-7xl"
-							aria-hidden="true"
-						>
+				steps.map((step, i) => (
+					<article class:list={['reveal relative border-t-2 border-rust/30 pt-8', i === 1 && 'reveal-delay-1', i === 2 && 'reveal-delay-2']}>
+						<span class="absolute -top-4 left-0 font-mono text-sm font-bold text-rust" aria-hidden="true">
 							{step.num}
 						</span>
-
-						<div class="relative pt-4">
-							<div
-								class="mb-5 h-3.5 w-3.5 rounded-full border-2 border-accent bg-background ring-4 ring-accent/20"
-								aria-hidden="true"
-							></div>
-
-							<h3 class="text-sm font-semibold uppercase tracking-widest text-accent">{step.title}</h3>
-							<p class="mt-3 text-base leading-relaxed text-secondary">{step.desc}</p>
-						</div>
+						<h3 class="font-heading text-xl font-bold text-espresso">{step.title}</h3>
+						<p class="mt-3 text-base leading-relaxed text-muted">{step.desc}</p>
 					</article>
 				))
 			}

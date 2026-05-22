@@ -1,0 +1,112 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { ImageMetadata } from 'astro';
+import Button from '../../ui/Button.astro';
+import CaseStudyCover from '../../ui/CaseStudyCover.astro';
+import type { Locale } from '../../i18n';
+import { getCaseStudySlug } from '../../../utils/case-studies';
+
+interface Props {
+	entry: CollectionEntry<'case-studies'>;
+	locale: Locale;
+	coverImage?: ImageMetadata;
+	backHref: string;
+	ctaHref: string;
+	backLabel: string;
+	ctaLabel: string;
+	ctaHeading: string;
+}
+
+const { entry, coverImage, backHref, ctaHref, backLabel, ctaLabel, ctaHeading } = Astro.props;
+const { Content } = await entry.render();
+const { title, quote, company, location, author, authorRole } = entry.data;
+const hasBody = getCaseStudySlug(entry.id) === 'paperlike-barcelona';
+---
+
+<article>
+	<section class="bg-canvas pt-24 pb-10 md:pt-28 md:pb-14">
+		<div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+			<a
+				href={backHref}
+				class="reveal inline-flex cursor-pointer items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-sage transition-colors duration-200 hover:text-rust"
+			>
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+					<path d="m12 19-7-7 7-7"></path>
+					<path d="M19 12H5"></path>
+				</svg>
+				{backLabel}
+			</a>
+
+			<div class="reveal reveal-delay-1 mt-8">
+				{
+					coverImage ? (
+						<div class="double-bezel">
+							<div class="double-bezel-inner overflow-hidden p-0 shadow-editorial">
+								<CaseStudyCover
+									src={coverImage}
+									alt={`${company} — ${location}`}
+									variant="detail"
+									loading="eager"
+									class="aspect-[16/10] w-full object-cover md:aspect-[21/9]"
+								/>
+							</div>
+						</div>
+					) : (
+						<div class="double-bezel">
+							<div class="aspect-[16/10] w-full bg-gradient-to-br from-espresso/10 via-rust/15 to-sage/15 md:aspect-[21/9]" />
+						</div>
+					)
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="border-t border-black/[0.06] bg-surface pb-12 md:pb-16">
+		<div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+			<header class="reveal pt-10 md:pt-12">
+				<p class="chapter-label">{company} · {location}</p>
+				<h1 class="editorial-heading mt-3 font-heading text-[clamp(2rem,5vw,3rem)] font-bold leading-tight text-espresso">
+					{title}
+				</h1>
+			</header>
+
+			<figure class="reveal reveal-delay-1 mt-10">
+				<div class="double-bezel">
+					<div class="double-bezel-inner bg-canvas p-8 md:p-10">
+						<blockquote class="whitespace-pre-line font-heading text-lg italic leading-relaxed text-espresso md:text-xl">
+							{quote}
+						</blockquote>
+						<figcaption class="mt-6 flex items-center gap-3">
+							<span class="h-px flex-1 bg-gold/40" aria-hidden="true"></span>
+							<cite class="not-italic">
+								<span class="block font-semibold text-espresso">{author}</span>
+								<span class="mt-0.5 block font-mono text-[10px] uppercase tracking-wider text-sage">{authorRole}</span>
+							</cite>
+						</figcaption>
+					</div>
+				</div>
+			</figure>
+
+			{
+				hasBody && (
+					<>
+						<div class="chapter-divider reveal reveal-delay-2" />
+						<div class="reveal reveal-delay-2 prose prose-lg max-w-none prose-headings:font-heading prose-headings:text-espresso prose-p:text-muted prose-a:text-rust prose-p:leading-relaxed prose-blockquote:border-l-rust prose-blockquote:font-heading prose-blockquote:italic">
+							<Content />
+						</div>
+					</>
+				)
+			}
+		</div>
+	</section>
+
+	<section class="border-t border-black/[0.06] bg-canvas py-16 md:py-20">
+		<div class="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+			<p class="chapter-label">{company}</p>
+			<p class="mt-3 font-heading text-2xl font-bold text-espresso md:text-3xl">{ctaHeading}</p>
+			<div class="mt-8">
+				<Button href={ctaHref}>{ctaLabel}</Button>
+			</div>
+		</div>
+	</section>
+</article>

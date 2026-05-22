@@ -46,11 +46,17 @@ const ogImageUrl = new URL(ogImage, Astro.site).href;
 		<meta property="og:url" content={canonicalUrl} />
 		<meta property="og:locale" content={ogLocale} />
 	</head>
-	<body>
+	<body class="relative min-h-[100dvh] bg-canvas">
+		<div class="grain-overlay" aria-hidden="true"></div>
 		<Header locale={lang} />
 		<main>
 			<slot />
 		</main>
 		<Footer locale={lang} />
+
+	<script src="../../scripts/reveal.ts"></script>
+		<script src="../../scripts/count-up.ts"></script>
+		<script src="../../scripts/glare-card.ts"></script>
+		<script src="../../scripts/contact-form.ts"></script>
 	</body>
 </html>

@@ -18,7 +18,10 @@ export function getPathWithoutLocale(pathname: string): string {
 
 /** Relative URL for the language switcher — stays on the same page in the other locale. */
 export function getLocaleSwitchUrl(locale: Locale, pathname: string, hash = ''): string {
-	const path = getPathWithoutLocale(pathname);
+	let path = getPathWithoutLocale(pathname);
+	if (path === '/contacto' || path === '/contact') {
+		path = locale === 'es' ? '/contacto' : '/contact';
+	}
 	if (path === '/') {
 		return `/${locale}/${hash}`;
 	}

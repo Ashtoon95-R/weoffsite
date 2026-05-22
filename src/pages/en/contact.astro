@@ -1,0 +1,19 @@
+---
+import Layout from '../../components/layout/Layout.astro';
+import ContactSection from '../../components/sections/contact/ContactSection.astro';
+import { getTranslations } from '../../i18n';
+
+const locale = 'en';
+const t = getTranslations(locale);
+---
+
+<Layout title={t.contactPage.meta.title} description={t.contactPage.meta.description} lang={locale}>
+	<section class="editorial-hero-bg border-b border-black/[0.06] pt-28 pb-10 md:pt-32 md:pb-12">
+		<div class="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+			<p class="chapter-label">{t.contactPage.label}</p>
+			<h1 class="editorial-heading mt-4 text-[clamp(2rem,5vw,3.25rem)] leading-tight">{t.contactPage.title}</h1>
+			<p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">{t.contactPage.subtitle}</p>
+		</div>
+	</section>
+	<ContactSection locale={locale} showHeader={false} />
+</Layout>

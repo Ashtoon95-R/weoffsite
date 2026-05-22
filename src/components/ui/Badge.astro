@@ -1,5 +1,25 @@
 ---
-// TODO: Badge
+interface Props {
+	label: string;
+	variant?: 'default' | 'rust' | 'sage';
+	class?: string;
+}
+
+const { label, variant = 'default', class: className = '' } = Astro.props;
+
+const variants = {
+	default: 'bg-espresso/[0.04] text-espresso border-espresso/10',
+	rust: 'bg-rust/10 text-rust border-rust/20',
+	sage: 'bg-sage/10 text-sage border-sage/20',
+};
 ---
 
-<!-- TODO: Badge -->
+<span
+	class:list={[
+		'inline-flex items-center rounded-full border px-3 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.15em]',
+		variants[variant],
+		className,
+	]}
+>
+	{label}
+</span>

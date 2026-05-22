@@ -1,0 +1,102 @@
+---
+import Button from '../../ui/Button.astro';
+import { getTranslations, type Locale } from '../../../i18n';
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+const formEndpoint = import.meta.env.PUBLIC_CONTACT_FORM_URL ?? '';
+---
+
+<form
+	class="contact-form space-y-6"
+	data-contact-form
+	data-endpoint={formEndpoint}
+	data-success-message={t.contactPage.form.success}
+	data-error-message={t.contactPage.form.error}
+	novalidate
+>
+	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+		<div class="sm:col-span-1">
+			<label for="contact-name" class="mb-2 block text-sm font-semibold text-espresso">
+				{t.contactPage.form.name}<span class="text-rust" aria-hidden="true">*</span>
+			</label>
+			<input
+				id="contact-name"
+				name="name"
+				type="text"
+				required
+				autocomplete="name"
+				placeholder={t.contactPage.form.namePlaceholder}
+				class="w-full rounded-xl border border-black/[0.08] bg-canvas px-4 py-3 text-base text-espresso transition-colors duration-200 placeholder:text-muted/60 focus:border-rust/40 focus:outline-none focus:ring-2 focus:ring-rust/15"
+			/>
+		</div>
+
+		<div class="sm:col-span-1">
+			<label for="contact-email" class="mb-2 block text-sm font-semibold text-espresso">
+				{t.contactPage.form.email}<span class="text-rust" aria-hidden="true">*</span>
+			</label>
+			<input
+				id="contact-email"
+				name="email"
+				type="email"
+				required
+				autocomplete="email"
+				placeholder={t.contactPage.form.emailPlaceholder}
+				class="w-full rounded-xl border border-black/[0.08] bg-canvas px-4 py-3 text-base text-espresso transition-colors duration-200 placeholder:text-muted/60 focus:border-rust/40 focus:outline-none focus:ring-2 focus:ring-rust/15"
+			/>
+		</div>
+
+		<div class="sm:col-span-1">
+			<label for="contact-participants" class="mb-2 block text-sm font-semibold text-espresso">
+				{t.contactPage.form.participants}
+			</label>
+			<input
+				id="contact-participants"
+				name="participants"
+				type="number"
+				min="0"
+				step="1"
+				inputmode="numeric"
+				placeholder={t.contactPage.form.participantsPlaceholder}
+				class="w-full rounded-xl border border-black/[0.08] bg-canvas px-4 py-3 text-base text-espresso transition-colors duration-200 placeholder:text-muted/60 focus:border-rust/40 focus:outline-none focus:ring-2 focus:ring-rust/15"
+			/>
+		</div>
+
+		<div class="sm:col-span-1">
+			<label for="contact-dates" class="mb-2 block text-sm font-semibold text-espresso">
+				{t.contactPage.form.dates}
+			</label>
+			<input
+				id="contact-dates"
+				name="dates"
+				type="text"
+				placeholder={t.contactPage.form.datesPlaceholder}
+				class="w-full rounded-xl border border-black/[0.08] bg-canvas px-4 py-3 text-base text-espresso transition-colors duration-200 placeholder:text-muted/60 focus:border-rust/40 focus:outline-none focus:ring-2 focus:ring-rust/15"
+			/>
+		</div>
+	</div>
+
+	<div>
+		<label for="contact-message" class="mb-2 block text-sm font-semibold text-espresso">
+			{t.contactPage.form.message}
+		</label>
+		<textarea
+			id="contact-message"
+			name="message"
+			rows="5"
+			placeholder={t.contactPage.form.messagePlaceholder}
+			class="w-full resize-y rounded-xl border border-black/[0.08] bg-canvas px-4 py-3 text-base leading-relaxed text-espresso transition-colors duration-200 placeholder:text-muted/60 focus:border-rust/40 focus:outline-none focus:ring-2 focus:ring-rust/15"
+		></textarea>
+	</div>
+
+	<input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+
+	<div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+		<p class="contact-form-status hidden text-sm font-medium" role="status" aria-live="polite"></p>
+		<Button type="submit" class="contact-form-submit w-full sm:ml-auto sm:w-auto">{t.contactPage.form.submit}</Button>
+	</div>
+</form>

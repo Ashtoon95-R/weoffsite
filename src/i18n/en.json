@@ -23,6 +23,7 @@
 		"services": "Services",
 		"caseStudies": "Case Studies",
 		"contact": "Contact",
+		"login": "Log in",
 		"cta": "Book a call"
 	},
 	"about": {
@@ -226,14 +227,41 @@
 		"pageSubtitle": "Discover how distributed teams around the world plan unforgettable offsites with We Offsite — from Park City to Phuket, Barcelona to the Algarve.",
 		"meta": {
 			"title": "Case Studies — We Offsite",
-			"description": "Corporate retreat success stories: Graphite, Kayzen, Paperlike, Incident.io, OPTI Digital, Balena, and Definely."
+			"description": "Corporate retreat success stories: Kayzen, Paperlike, Incident.io, OPTI Digital, Balena, and Definely."
 		},
 		"viewFull": "View full case"
 	},
 	"calendly": {
 		"eyebrow": "EVENT MANAGEMENT",
 		"title": "Book a call and organize your retreat hassle-free",
-		"placeholder": "Calendly embed — https://calendly.com/weoffsite"
+		"iframeTitle": "Select a date and time — Calendly"
+	},
+	"contactPage": {
+		"meta": {
+			"title": "Contact — We Offsite",
+			"description": "Contact We Offsite for a free proposal for your company offsite or corporate retreat."
+		},
+		"label": "Contact",
+		"title": "Contact us and get a free proposal",
+		"subtitle": "Tell us about your team and we'll send you personalized options for your next offsite.",
+		"form": {
+			"name": "Name",
+			"namePlaceholder": "Your name",
+			"email": "Work email",
+			"emailPlaceholder": "you@company.com",
+			"participants": "Number of participants",
+			"participantsPlaceholder": "0+",
+			"dates": "Dates",
+			"datesPlaceholder": "e.g. March 2026 or flexible",
+			"message": "Message",
+			"messagePlaceholder": "Tell us about your offsite goals, destination preferences, or any special requirements…",
+			"submit": "Send request",
+			"required": "Required field",
+			"success": "Thank you! We'll get back to you shortly with a proposal.",
+			"error": "Something went wrong. Please try again or book a call below."
+		},
+		"calendlyHint": "Prefer to talk first?",
+		"calendlyLink": "Book a call on Calendly"
 	},
 	"cta": {
 		"eyebrow": "CONSULTING SERVICES",
@@ -247,6 +275,7 @@
 	},
 	"caseStudyDetail": {
 		"backLink": "Back to case studies",
+		"ctaHeading": "Ready to plan yours?",
 		"ctaButton": "Book a call"
 	}
 }

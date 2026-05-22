@@ -1,5 +1,36 @@
 ---
-// TODO: Card
+interface Props {
+	href?: string;
+	class?: string;
+	glare?: boolean;
+	padding?: 'none' | 'sm' | 'md' | 'lg';
+}
+
+const { href, class: className = '', glare = false, padding = 'md' } = Astro.props;
+
+const paddingClasses = {
+	none: 'p-0',
+	sm: 'p-4',
+	md: 'p-6',
+	lg: 'p-8',
+};
+
+const innerClasses = `double-bezel-inner overflow-hidden shadow-editorial transition-all duration-300 ease-editorial hover:shadow-lg ${paddingClasses[padding]} ${className}`;
+const outerClasses = `double-bezel block h-full transition-transform duration-300 ease-editorial hover:-translate-y-0.5 ${glare ? 'glare-card' : ''}`;
 ---
 
-<!-- TODO: Card -->
+{
+	href ? (
+		<a href={href} class={outerClasses}>
+			<div class={innerClasses}>
+				<slot />
+			</div>
+		</a>
+	) : (
+		<div class={outerClasses}>
+			<div class={innerClasses}>
+				<slot />
+			</div>
+		</div>
+	)
+}

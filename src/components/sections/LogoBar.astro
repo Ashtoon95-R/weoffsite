@@ -8,20 +8,20 @@ interface Props {
 const { locale } = Astro.props;
 const t = getTranslations(locale);
 
-const logos = ['Kayzen', 'Paperlike', 'Incident.io', 'OPTI Digital', 'Balena', 'Definely', 'Graphite'];
+const logos = ['Kayzen', 'Paperlike', 'Incident.io', 'OPTI Digital', 'Balena', 'Definely'];
 ---
 
-<section class="overflow-hidden border-y border-secondary/10 bg-white py-10" aria-label={t.logoBar.prefix}>
-	<p class="mb-6 text-center text-sm font-semibold uppercase tracking-widest text-secondary">
+<section class="overflow-hidden border-y border-black/[0.06] bg-surface py-12" aria-label={t.logoBar.prefix}>
+	<p class="mb-8 text-center font-mono text-xs uppercase tracking-[0.2em] text-muted">
 		{t.logoBar.prefix}
 	</p>
 
 	<div class="overflow-hidden" aria-hidden="true">
-		<div class="marquee-track flex w-max items-center gap-12 px-6">
+		<div class="marquee-track flex w-max items-center gap-16 px-8">
 			{
 				[...logos, ...logos].map((logo) => (
-					<span class="flex cursor-default select-none items-center gap-3 text-sm font-semibold uppercase tracking-widest text-secondary/50 transition-colors duration-200 hover:text-primary">
-						<span class="h-px w-4 bg-accent/40" aria-hidden="true"></span>
+					<span class="flex cursor-default select-none items-center gap-4 font-mono text-sm uppercase tracking-[0.15em] text-espresso/40 transition-colors duration-300 hover:text-espresso">
+						<span class="h-px w-6 bg-rust/30" aria-hidden="true"></span>
 						{logo}
 					</span>
 				))

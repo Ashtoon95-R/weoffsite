@@ -9,15 +9,12 @@ const { locale } = Astro.props;
 const t = getTranslations(locale);
 ---
 
-<section class="bg-background py-16 md:py-24" aria-labelledby="benefits-expense-title">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<div class="mx-auto max-w-3xl text-center">
-			<h2 id="benefits-expense-title" class="font-heading text-3xl font-bold tracking-tight text-primary md:text-4xl">
-				{t.benefits.expense.title}
-			</h2>
-			<p class="mt-6 text-base leading-relaxed text-secondary md:text-lg">
-				{t.benefits.expense.desc}
-			</p>
-		</div>
+<section class="bg-canvas py-20 md:py-28" aria-labelledby="benefits-expense-title">
+	<div class="reveal mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+		<p class="chapter-label">{locale === 'es' ? 'Presupuesto' : 'Budget'}</p>
+		<h2 id="benefits-expense-title" class="mt-3 editorial-heading text-3xl md:text-4xl">
+			{t.benefits.expense.title}
+		</h2>
+		<p class="mt-6 text-base leading-relaxed text-muted md:text-lg">{t.benefits.expense.desc}</p>
 	</div>
 </section>
