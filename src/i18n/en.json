@@ -276,6 +276,7 @@
 	"caseStudyDetail": {
 		"backLink": "Back to case studies",
 		"galleryHeading": "Gallery",
+		"galleryExpandLabel": "View {alt} fullscreen",
 		"ctaHeading": "Ready to plan yours?",
 		"ctaButton": "Book a call"
 	}

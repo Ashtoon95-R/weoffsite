@@ -5,6 +5,7 @@ import CaseStudyCover from '../ui/CaseStudyCover.astro';
 import { getTranslations, type Locale } from '../../i18n';
 import { getCaseStudySlug } from '../../utils/case-studies';
 import { getCaseStudyCoverImage } from '../../utils/case-study-images';
+import { localePath } from '../../utils/paths';
 
 interface Props {
 	locale: Locale;
@@ -62,7 +63,7 @@ const trustBadges = [
 			<div class="reveal reveal-delay-3 mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
 				<Button href="#calendly-section">{t.hero.ctaPrimary}</Button>
 				<a
-					href={locale === 'es' ? '/es/case-studies' : '/en/case-studies'}
+					href={localePath(locale, 'case-studies')}
 					class="cursor-pointer text-center text-base font-semibold text-espresso underline-offset-4 transition-all duration-200 hover:text-rust hover:underline"
 				>
 					{t.hero.ctaSecondary}

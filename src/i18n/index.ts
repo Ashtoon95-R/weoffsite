@@ -1,5 +1,6 @@
 import es from './es.json';
 import en from './en.json';
+import { withTrailingSlash } from '../utils/paths';
 
 export type Locale = 'en' | 'es';
 export type Translations = typeof en;
@@ -25,5 +26,5 @@ export function getLocaleSwitchUrl(locale: Locale, pathname: string, hash = ''):
 	if (path === '/') {
 		return `/${locale}/${hash}`;
 	}
-	return `/${locale}${path}${hash}`;
+	return withTrailingSlash(`/${locale}${path}`) + hash;
 }

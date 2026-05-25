@@ -4,6 +4,7 @@ import CaseStudyCover from '../ui/CaseStudyCover.astro';
 import { getTranslations, type Locale } from '../../i18n';
 import { getCaseStudySlug } from '../../utils/case-studies';
 import { getCaseStudyCoverImage } from '../../utils/case-study-images';
+import { localePath } from '../../utils/paths';
 
 interface Props {
 	locale: Locale;
@@ -15,7 +16,6 @@ const t = getTranslations(locale);
 const studies = (await getCollection('case-studies', ({ data }) => data.lang === locale)).sort(
 	(a, b) => a.data.order - b.data.order,
 );
-const basePath = `/${locale}/case-studies`;
 const [featured, ...rest] = studies;
 ---
 
@@ -44,7 +44,7 @@ const [featured, ...rest] = studies;
 					const featuredCover = getCaseStudyCoverImage(getCaseStudySlug(featured.id));
 					return (
 					<article class="reveal glare-card group lg:col-span-8">
-						<a href={`${basePath}/${getCaseStudySlug(featured.id)}`} class="double-bezel block h-full cursor-pointer">
+						<a href={localePath(locale, 'case-studies', getCaseStudySlug(featured.id))} class="double-bezel block h-full cursor-pointer">
 							<div class="double-bezel-inner flex h-full flex-col overflow-hidden p-0">
 								<div class="relative aspect-[16/10] overflow-hidden img-skeleton">
 									{featuredCover ? (
@@ -88,7 +88,7 @@ const [featured, ...rest] = studies;
 						const cover = getCaseStudyCoverImage(getCaseStudySlug(study.id));
 						return (
 						<article class:list={['reveal glare-card group', i === 1 && 'reveal-delay-1']}>
-							<a href={`${basePath}/${getCaseStudySlug(study.id)}`} class="double-bezel block h-full cursor-pointer">
+							<a href={localePath(locale, 'case-studies', getCaseStudySlug(study.id))} class="double-bezel block h-full cursor-pointer">
 								<div class="double-bezel-inner flex h-full flex-col overflow-hidden p-0">
 									<div class="relative aspect-[16/10] overflow-hidden img-skeleton">
 										{cover ? (
@@ -130,7 +130,7 @@ const [featured, ...rest] = studies;
 						const cover = getCaseStudyCoverImage(getCaseStudySlug(study.id));
 						return (
 						<article class="reveal glare-card group">
-							<a href={`${basePath}/${getCaseStudySlug(study.id)}`} class="double-bezel block cursor-pointer">
+							<a href={localePath(locale, 'case-studies', getCaseStudySlug(study.id))} class="double-bezel block cursor-pointer">
 								<div class="double-bezel-inner overflow-hidden p-0">
 									<div class="relative aspect-[16/10] img-skeleton">
 										{cover ? (

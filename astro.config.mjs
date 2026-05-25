@@ -6,6 +6,7 @@ import mdx from '@astrojs/mdx';
 
 export default defineConfig({
   site: 'https://weoffsite.com',
+  trailingSlash: 'always',
   integrations: [tailwind(), sitemap(), react(), mdx()],
   image: {
     layout: 'constrained',

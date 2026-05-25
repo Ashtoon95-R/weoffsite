@@ -276,6 +276,7 @@
 	"caseStudyDetail": {
 		"backLink": "Volver a casos de éxito",
 		"galleryHeading": "Galería",
+		"galleryExpandLabel": "Ver {alt} en pantalla completa",
 		"ctaHeading": "¿Listo para planificar el vuestro?",
 		"ctaButton": "Agenda una llamada"
 	}

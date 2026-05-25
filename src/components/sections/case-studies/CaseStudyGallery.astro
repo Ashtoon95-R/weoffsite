@@ -10,9 +10,10 @@ interface GalleryItem {
 interface Props {
 	images: GalleryItem[];
 	heading: string;
+	expandLabel: string;
 }
 
-const { images, heading } = Astro.props;
+const { images, heading, expandLabel } = Astro.props;
 const spans = getGallerySpans(images.length);
 ---
 
@@ -21,28 +22,40 @@ const spans = getGallerySpans(images.length);
 		<h2 id="case-study-gallery-heading" class="chapter-label reveal">{heading}</h2>
 
 		<ul
+			data-gallery-lightbox
 			class="reveal reveal-delay-1 mt-8 grid list-none grid-cols-2 gap-3 p-0 md:grid-cols-6 md:auto-rows-[minmax(11rem,auto)] md:gap-4"
 		>
 			{
 				images.map((image, index) => (
 					<li class={`${spans[index] ?? 'md:col-span-2'} overflow-hidden`}>
-						<div class="double-bezel h-full">
-							<div class="double-bezel-inner h-full overflow-hidden p-0 shadow-editorial">
-								<img
-									src={image.src.src}
-									alt={image.alt}
-									width={image.src.width}
-									height={image.src.height}
-									sizes="(min-width: 1024px) 33vw, 50vw"
-									loading={index < 2 ? 'eager' : 'lazy'}
-									decoding="async"
-									class="h-full min-h-[10rem] w-full object-cover transition-transform duration-500 ease-editorial hover:scale-[1.02] md:min-h-0"
-								/>
+						<a
+							href={image.src.src}
+							data-pswp-width={image.src.width}
+							data-pswp-height={image.src.height}
+							data-cropped="true"
+							class="group block h-full cursor-zoom-in focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust"
+							aria-label={expandLabel.replace('{alt}', image.alt)}
+						>
+							<div class="double-bezel h-full">
+								<div class="double-bezel-inner h-full overflow-hidden p-0 shadow-editorial">
+									<img
+										src={image.src.src}
+										alt={image.alt}
+										width={image.src.width}
+										height={image.src.height}
+										sizes="(min-width: 1024px) 33vw, 50vw"
+										loading={index < 2 ? 'eager' : 'lazy'}
+										decoding="async"
+										class="h-full min-h-[10rem] w-full object-cover transition-transform duration-500 ease-editorial group-hover:scale-[1.02] md:min-h-0"
+									/>
+								</div>
 							</div>
-						</div>
+						</a>
 					</li>
 				))
 			}
 		</ul>
 	</div>
 </section>
+
+<script src="../../../scripts/gallery-lightbox.ts"></script>

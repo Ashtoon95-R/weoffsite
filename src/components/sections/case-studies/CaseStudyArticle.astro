@@ -18,9 +18,10 @@ interface Props {
 	ctaLabel: string;
 	ctaHeading: string;
 	galleryHeading: string;
+	galleryExpandLabel: string;
 }
 
-const { entry, locale, coverImage, backHref, ctaHref, backLabel, ctaLabel, ctaHeading, galleryHeading } =
+const { entry, locale, coverImage, backHref, ctaHref, backLabel, ctaLabel, ctaHeading, galleryHeading, galleryExpandLabel } =
 	Astro.props;
 const { Content } = await entry.render();
 const { title, quote, company, location, author, authorRole } = entry.data;
@@ -106,7 +107,9 @@ const galleryImages = getCaseStudyGallery(slug, locale);
 		</div>
 	</section>
 
-	{galleryImages.length > 0 && <CaseStudyGallery images={galleryImages} heading={galleryHeading} />}
+	{galleryImages.length > 0 && (
+		<CaseStudyGallery images={galleryImages} heading={galleryHeading} expandLabel={galleryExpandLabel} />
+	)}
 
 	<section class="border-t border-black/[0.06] bg-canvas py-16 md:py-20">
 		<div class="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">

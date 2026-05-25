@@ -176,3 +176,18 @@
 		transition-duration: 0.01ms;
 	}
 }
+
+/* PhotoSwipe lightbox — Warm Editorial */
+.pswp {
+	--pswp-bg: #1c1410;
+	--pswp-placeholder-bg: #2a211c;
+	--pswp-root-z-index: 100000;
+}
+
+.pswp__button {
+	opacity: 0.85;
+}
+
+.pswp__button:hover {
+	opacity: 1;
+}

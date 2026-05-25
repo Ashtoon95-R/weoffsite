@@ -5,6 +5,7 @@ import CaseStudyArticle from '../../../components/sections/case-studies/CaseStud
 import { getTranslations } from '../../../i18n';
 import { getCaseStudySlug } from '../../../utils/case-studies';
 import { getCaseStudyCoverImage } from '../../../utils/case-study-images';
+import { localeHome, localePath } from '../../../utils/paths';
 
 export async function getStaticPaths() {
 	const locale = 'es';
@@ -31,10 +32,11 @@ const coverImage = getCaseStudyCoverImage(getCaseStudySlug(entry.id));
 		entry={entry}
 		locale={locale}
 		coverImage={coverImage}
-		backHref="/es/case-studies"
-		ctaHref="/es/#calendly-section"
+		backHref={localePath('es', 'case-studies')}
+		ctaHref={`${localeHome('es')}#calendly-section`}
 		backLabel={t.caseStudyDetail.backLink}
 		galleryHeading={t.caseStudyDetail.galleryHeading}
+		galleryExpandLabel={t.caseStudyDetail.galleryExpandLabel}
 		ctaLabel={t.caseStudyDetail.ctaButton}
 		ctaHeading={t.caseStudyDetail.ctaHeading}
 	/>

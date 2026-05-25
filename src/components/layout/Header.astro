@@ -2,6 +2,7 @@
 import Button from '../ui/Button.astro';
 import { getLocaleSwitchUrl, getTranslations, type Locale } from '../../i18n';
 import { getContactUrl } from '../../utils/contact';
+import { localeHome, localePath } from '../../utils/paths';
 
 interface Props {
 	locale: Locale;
@@ -12,9 +13,9 @@ const t = getTranslations(locale);
 
 const enUrl = getLocaleSwitchUrl('en', Astro.url.pathname, Astro.url.hash);
 const esUrl = getLocaleSwitchUrl('es', Astro.url.pathname, Astro.url.hash);
-const homeUrl = locale === 'es' ? '/es/' : '/en/';
-const aboutUrl = `${homeUrl}about`;
-const benefitsUrl = `${homeUrl}benefits`;
+const homeUrl = localeHome(locale);
+const aboutUrl = localePath(locale, 'about');
+const benefitsUrl = localePath(locale, 'benefits');
 const pathname = Astro.url.pathname;
 const loginUrl = 'https://app.weoffsite.com/login';
 const contactUrl = getContactUrl(locale);
@@ -24,7 +25,7 @@ const navLinks = [
 	{ label: t.nav.about, href: aboutUrl },
 	{ label: t.nav.benefits, href: benefitsUrl },
 	{ label: t.nav.services, href: `${homeUrl}#services` },
-	{ label: t.nav.caseStudies, href: `${homeUrl}case-studies` },
+	{ label: t.nav.caseStudies, href: localePath(locale, 'case-studies') },
 	{ label: t.nav.contact, href: contactUrl },
 ];
 
@@ -34,7 +35,8 @@ function isActive(href: string) {
 	if (href.startsWith('#')) return false;
 	if (href.includes('#')) return pathname === homeUrl || pathname === `${homeUrl}`;
 	if (href === contactUrl) return pathname === contactUrl;
-	return pathname === href || pathname.startsWith(href + '/');
+	const normalized = href.endsWith('/') ? href : `${href}/`;
+	return pathname === normalized || pathname.startsWith(normalized);
 }
 ---
 
