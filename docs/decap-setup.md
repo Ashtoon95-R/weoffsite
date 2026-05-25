@@ -30,9 +30,9 @@ Invitar a Roberto como **collaborator** en `Ashtoon95-R/weoffsite` con permiso *
 ## 4. Verificación
 
 1. Abrir `https://we-offsite.vercel.app/admin/`
-2. Login with GitHub → debe redirigir y volver autenticado
-3. Editar un testimonio de prueba → Publish → comprobar deploy en Vercel
-4. Confirmar que el cambio aparece en la web
+2. Login with GitHub → se abre popup → vuelve solo y entra al panel
+3. Probar que `/api/auth` redirige a GitHub (no 404)
+4. Editar un testimonio de prueba → Publish → comprobar deploy en Vercel
 
 ## Archivos relevantes
 
