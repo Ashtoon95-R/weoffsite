@@ -1,12 +1,13 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { getEntry } from 'astro:content';
 import type { ImageMetadata } from 'astro';
 import Button from '../../ui/Button.astro';
 import CaseStudyCover from '../../ui/CaseStudyCover.astro';
 import CaseStudyGallery from './CaseStudyGallery.astro';
 import type { Locale } from '../../i18n';
 import { getCaseStudySlug } from '../../../utils/case-studies';
-import { getCaseStudyGallery } from '../../../utils/case-study-gallery';
+import { getCaseStudyGallery } from '../../../utils/case-study-assets';
 
 interface Props {
 	entry: CollectionEntry<'case-studies'>;
@@ -23,11 +24,12 @@ interface Props {
 
 const { entry, locale, coverImage, backHref, ctaHref, backLabel, ctaLabel, ctaHeading, galleryHeading, galleryExpandLabel } =
 	Astro.props;
+const fullEntry = await getEntry(entry.collection, entry.id.replace(/\.mdx?$/, ''));
 const { Content } = await entry.render();
 const { title, quote, company, location, author, authorRole } = entry.data;
 const slug = getCaseStudySlug(entry.id);
-const hasBody = slug === 'paperlike-barcelona';
-const galleryImages = getCaseStudyGallery(slug, locale);
+const hasBody = (fullEntry?.body ?? '').trim().length > 0;
+const galleryImages = getCaseStudyGallery(slug, locale, { company, location });
 ---
 
 <article>

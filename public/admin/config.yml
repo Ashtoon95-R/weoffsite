@@ -1,0 +1,132 @@
+backend:
+  name: github
+  repo: Ashtoon95-R/weoffsite
+  branch: master
+  base_url: https://we-offsite.vercel.app
+  auth_endpoint: api/auth
+
+media_folder: src/assets/case-studies
+public_folder: /src/assets/case-studies
+
+locale: es
+
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize:
+    sanitize_unicode: true
+
+collections:
+  - name: case-studies-es
+    label: Casos de éxito (ES)
+    label_singular: Caso de éxito (ES)
+    folder: src/content/case-studies/es
+    create: true
+    slug: '{{slug}}'
+    extension: mdx
+    format: frontmatter
+    identifier_field: title
+    summary: '{{company}} · {{location}}'
+    sortable_fields: [order, date, title, company]
+    view_filters:
+      - label: Ordenados
+        field: order
+        pattern: '.+'
+    fields:
+      - label: Slug (URL)
+        name: slug
+        widget: string
+        hint: 'Identificador único. Debe coincidir con la versión EN (ej. kayzen-phuket).'
+        pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', 'Solo minúsculas, números y guiones']
+      - label: Título
+        name: title
+        widget: string
+      - label: Empresa
+        name: company
+        widget: string
+      - label: Destino
+        name: location
+        widget: string
+      - label: Testimonio
+        name: quote
+        widget: text
+      - label: Autor
+        name: author
+        widget: string
+      - label: Cargo
+        name: authorRole
+        widget: string
+      - label: Idioma
+        name: lang
+        widget: hidden
+        default: es
+      - label: Fecha del evento
+        name: date
+        widget: datetime
+      - label: Orden en listados
+        name: order
+        widget: number
+        value_type: int
+        min: 1
+        max: 99
+        hint: 'Número más bajo = aparece antes en la home (1 = primero).'
+      - label: Cuerpo adicional
+        name: body
+        widget: markdown
+        required: false
+        hint: 'Opcional. Segundo testimonio o texto extra. Fotos: Biblioteca de medios → carpeta src/assets/case-studies/{slug}/ (cover.webp + 01.webp, 02.webp…).'
+
+  - name: case-studies-en
+    label: Case studies (EN)
+    label_singular: Case study (EN)
+    folder: src/content/case-studies/en
+    create: true
+    slug: '{{slug}}'
+    extension: mdx
+    format: frontmatter
+    identifier_field: title
+    summary: '{{company}} · {{location}}'
+    sortable_fields: [order, date, title, company]
+    fields:
+      - label: Slug (URL)
+        name: slug
+        widget: string
+        hint: 'Unique identifier. Must match the ES version (e.g. kayzen-phuket).'
+        pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', 'Lowercase letters, numbers and hyphens only']
+      - label: Title
+        name: title
+        widget: string
+      - label: Company
+        name: company
+        widget: string
+      - label: Location
+        name: location
+        widget: string
+      - label: Quote
+        name: quote
+        widget: text
+      - label: Author
+        name: author
+        widget: string
+      - label: Role
+        name: authorRole
+        widget: string
+      - label: Language
+        name: lang
+        widget: hidden
+        default: en
+      - label: Event date
+        name: date
+        widget: datetime
+      - label: List order
+        name: order
+        widget: number
+        value_type: int
+        min: 1
+        max: 99
+        hint: 'Lower number = appears earlier on the homepage (1 = first).'
+      - label: Additional body
+        name: body
+        widget: markdown
+        required: false
+        hint: 'Optional. Second quote or extra copy. Photos: Media library → src/assets/case-studies/{slug}/ (cover.webp + 01.webp, 02.webp…).'

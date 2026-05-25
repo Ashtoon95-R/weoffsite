@@ -10,6 +10,7 @@
     "build": "npm run i18n:check && astro build",
     "i18n:check": "node scripts/i18n-check.mjs",
     "images:optimize": "node scripts/optimize-images.mjs",
+    "images:migrate-case-studies": "node scripts/migrate-case-study-assets.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
