@@ -1,24 +1,44 @@
 import { readdir, stat, unlink } from 'node:fs/promises';
-import { join, extname, basename } from 'node:path';
+import { join, extname, basename, relative } from 'node:path';
 import sharp from 'sharp';
 
-const IMAGES_DIR = join(process.cwd(), 'src/assets/images');
+const ASSETS_DIR = join(process.cwd(), 'src/assets');
 const MAX_WIDTH = 2400;
 const WEBP_QUALITY = 90;
 const KEEP_SOURCES = process.argv.includes('--keep-sources');
+const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg']);
 
-const files = await readdir(IMAGES_DIR);
-const sources = files.filter((file) => ['.png', '.jpg', '.jpeg'].includes(extname(file).toLowerCase()));
+async function collectSources(dir) {
+	const entries = await readdir(dir, { withFileTypes: true });
+	const sources = [];
+
+	for (const entry of entries) {
+		const fullPath = join(dir, entry.name);
+		if (entry.isDirectory()) {
+			sources.push(...(await collectSources(fullPath)));
+			continue;
+		}
+		if (IMAGE_EXTENSIONS.has(extname(entry.name).toLowerCase())) {
+			sources.push(fullPath);
+		}
+	}
+
+	return sources;
+}
+
+const sources = await collectSources(ASSETS_DIR);
 
 if (sources.length === 0) {
-	console.log('No PNG/JPG sources found in src/assets/images');
+	console.log('No PNG/JPG sources found under src/assets');
 	process.exit(0);
 }
 
-for (const file of sources) {
-	const inputPath = join(IMAGES_DIR, file);
+for (const inputPath of sources) {
+	const dir = join(inputPath, '..');
+	const file = basename(inputPath);
 	const outputName = `${basename(file, extname(file))}.webp`;
-	const outputPath = join(IMAGES_DIR, outputName);
+	const outputPath = join(dir, outputName);
+	const relPath = relative(process.cwd(), inputPath);
 
 	const inputStats = await stat(inputPath);
 	const image = sharp(inputPath);
@@ -36,7 +56,7 @@ for (const file of sources) {
 	const outMeta = await sharp(outputPath).metadata();
 
 	console.log(
-		`${file} → ${outputName} (${outMeta.width}x${outMeta.height}, ${Math.round(inputStats.size / 1024)}KB → ${Math.round(outputStats.size / 1024)}KB, -${saved}%)`,
+		`${relPath} → ${relative(process.cwd(), outputPath)} (${outMeta.width}x${outMeta.height}, ${Math.round(inputStats.size / 1024)}KB → ${Math.round(outputStats.size / 1024)}KB, -${saved}%)`,
 	);
 
 	if (!KEEP_SOURCES) {

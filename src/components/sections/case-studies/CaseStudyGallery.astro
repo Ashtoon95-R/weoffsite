@@ -1,0 +1,48 @@
+---
+import type { ImageMetadata } from 'astro';
+import { getGallerySpans } from '../../../utils/case-study-gallery';
+
+interface GalleryItem {
+	src: ImageMetadata;
+	alt: string;
+}
+
+interface Props {
+	images: GalleryItem[];
+	heading: string;
+}
+
+const { images, heading } = Astro.props;
+const spans = getGallerySpans(images.length);
+---
+
+<section class="border-t border-black/[0.06] bg-canvas py-12 md:py-16" aria-labelledby="case-study-gallery-heading">
+	<div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+		<h2 id="case-study-gallery-heading" class="chapter-label reveal">{heading}</h2>
+
+		<ul
+			class="reveal reveal-delay-1 mt-8 grid list-none grid-cols-2 gap-3 p-0 md:grid-cols-6 md:auto-rows-[minmax(11rem,auto)] md:gap-4"
+		>
+			{
+				images.map((image, index) => (
+					<li class={`${spans[index] ?? 'md:col-span-2'} overflow-hidden`}>
+						<div class="double-bezel h-full">
+							<div class="double-bezel-inner h-full overflow-hidden p-0 shadow-editorial">
+								<img
+									src={image.src.src}
+									alt={image.alt}
+									width={image.src.width}
+									height={image.src.height}
+									sizes="(min-width: 1024px) 33vw, 50vw"
+									loading={index < 2 ? 'eager' : 'lazy'}
+									decoding="async"
+									class="h-full min-h-[10rem] w-full object-cover transition-transform duration-500 ease-editorial hover:scale-[1.02] md:min-h-0"
+								/>
+							</div>
+						</div>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
