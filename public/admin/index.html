@@ -6,8 +6,40 @@
 		<meta name="robots" content="noindex, nofollow" />
 		<title>We Offsite — Admin</title>
 		<link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
+		<script>
+			(function () {
+				try {
+					window.__DECAP_PENDING_AUTH__ = localStorage.getItem('decap_cms_github_auth');
+					if (window.__DECAP_PENDING_AUTH__) {
+						localStorage.removeItem('decap_cms_github_auth');
+					}
+				} catch (error) {
+					window.__DECAP_PENDING_AUTH__ = null;
+				}
+			})();
+		</script>
 	</head>
 	<body>
 		<script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+		<script>
+			(function () {
+				if (!window.__DECAP_PENDING_AUTH__) return;
+
+				var authMessage = window.__DECAP_PENDING_AUTH__;
+				delete window.__DECAP_PENDING_AUTH__;
+
+				function deliverAuth() {
+					window.postMessage(authMessage, window.location.origin);
+				}
+
+				if (document.readyState === 'complete') {
+					setTimeout(deliverAuth, 100);
+				} else {
+					window.addEventListener('load', function () {
+						setTimeout(deliverAuth, 100);
+					});
+				}
+			})();
+		</script>
 	</body>
 </html>

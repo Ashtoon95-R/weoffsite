@@ -51,6 +51,7 @@ export default async function handler(req, res) {
 	}
 
 	const token = JSON.stringify(data.access_token);
+	const adminUrl = JSON.stringify(`${siteUrl}/admin/`);
 
 	res.setHeader('Content-Type', 'text/html; charset=utf-8');
 	res.status(200).send(`<!doctype html>
@@ -60,17 +61,30 @@ export default async function handler(req, res) {
 <script>
 (function () {
   var token = ${token};
-  if (window.opener) {
-    window.opener.postMessage(
-      'authorization:github:success:' + JSON.stringify({ token: token, provider: 'github' }),
-      '*'
-    );
-    window.close();
-  } else {
-    document.body.innerHTML = '<p>Autorización completada. Cierra esta ventana y vuelve a /admin/</p>';
+  var authMessage = 'authorization:github:success:' + JSON.stringify({ token: token, provider: 'github' });
+  var opener = window.opener;
+
+  if (opener && !opener.closed) {
+    try {
+      opener.postMessage(authMessage, '*');
+      window.close();
+      return;
+    } catch (error) {
+      /* fall through to localStorage redirect */
+    }
   }
+
+  try {
+    localStorage.setItem('decap_cms_github_auth', authMessage);
+  } catch (error) {
+    document.body.innerHTML = '<p>No se pudo guardar la sesión. Prueba otro navegador.</p>';
+    return;
+  }
+
+  window.location.replace(${adminUrl});
 })();
 </script>
+<p>Redirigiendo al panel…</p>
 </body>
 </html>`);
 }
