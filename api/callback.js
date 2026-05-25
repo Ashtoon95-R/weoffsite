@@ -51,7 +51,7 @@ export default async function handler(req, res) {
 	}
 
 	const token = JSON.stringify(data.access_token);
-	const adminUrl = JSON.stringify(`${siteUrl}/admin/`);
+	const origin = JSON.stringify(siteUrl);
 
 	res.setHeader('Content-Type', 'text/html; charset=utf-8');
 	res.status(200).send(`<!doctype html>
@@ -61,30 +61,43 @@ export default async function handler(req, res) {
 <script>
 (function () {
   var token = ${token};
+  var origin = ${origin};
   var authMessage = 'authorization:github:success:' + JSON.stringify({ token: token, provider: 'github' });
-  var opener = window.opener;
 
-  if (opener && !opener.closed) {
-    try {
-      opener.postMessage(authMessage, '*');
-      window.close();
-      return;
-    } catch (error) {
-      /* fall through to localStorage redirect */
+  function deliverAuth() {
+    if (window.opener && !window.opener.closed) {
+      try {
+        window.opener.postMessage(authMessage, origin);
+        window.close();
+        return true;
+      } catch (error) {
+        /* fall through */
+      }
     }
+
+    try {
+      var channel = new BroadcastChannel('decap_github_oauth');
+      channel.postMessage(authMessage);
+      channel.close();
+    } catch (error) {
+      /* ignore */
+    }
+
+    try {
+      localStorage.setItem('decap_cms_github_auth', authMessage);
+    } catch (error) {
+      /* ignore */
+    }
+
+    window.close();
+    return false;
   }
 
-  try {
-    localStorage.setItem('decap_cms_github_auth', authMessage);
-  } catch (error) {
-    document.body.innerHTML = '<p>No se pudo guardar la sesión. Prueba otro navegador.</p>';
-    return;
+  if (!deliverAuth()) {
+    document.body.innerHTML = '<p>Sesión guardada. Puedes cerrar esta ventana.</p>';
   }
-
-  window.location.replace(${adminUrl});
 })();
 </script>
-<p>Redirigiendo al panel…</p>
 </body>
 </html>`);
 }

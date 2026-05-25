@@ -8,38 +8,43 @@
 		<link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
 		<script>
 			(function () {
-				try {
-					window.__DECAP_PENDING_AUTH__ = localStorage.getItem('decap_cms_github_auth');
-					if (window.__DECAP_PENDING_AUTH__) {
-						localStorage.removeItem('decap_cms_github_auth');
-					}
-				} catch (error) {
-					window.__DECAP_PENDING_AUTH__ = null;
+				var origin = window.location.origin;
+
+				function forwardToDecap(message) {
+					if (typeof message !== 'string') return;
+					window.postMessage(message, origin);
 				}
+
+				try {
+					var channel = new BroadcastChannel('decap_github_oauth');
+					channel.onmessage = function (event) {
+						var message = event.data;
+						forwardToDecap(message);
+
+						if (message === 'authorizing:github') {
+							channel.postMessage(message);
+						}
+					};
+				} catch (error) {
+					/* BroadcastChannel unavailable */
+				}
+
+				window.addEventListener('storage', function (event) {
+					if (event.key !== 'decap_cms_github_auth' || !event.newValue) return;
+					forwardToDecap(event.newValue);
+					localStorage.removeItem('decap_cms_github_auth');
+				});
+
+				setInterval(function () {
+					var pending = localStorage.getItem('decap_cms_github_auth');
+					if (!pending) return;
+					localStorage.removeItem('decap_cms_github_auth');
+					forwardToDecap(pending);
+				}, 500);
 			})();
 		</script>
 	</head>
 	<body>
 		<script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-		<script>
-			(function () {
-				if (!window.__DECAP_PENDING_AUTH__) return;
-
-				var authMessage = window.__DECAP_PENDING_AUTH__;
-				delete window.__DECAP_PENDING_AUTH__;
-
-				function deliverAuth() {
-					window.postMessage(authMessage, window.location.origin);
-				}
-
-				if (document.readyState === 'complete') {
-					setTimeout(deliverAuth, 100);
-				} else {
-					window.addEventListener('load', function () {
-						setTimeout(deliverAuth, 100);
-					});
-				}
-			})();
-		</script>
 	</body>
 </html>

@@ -27,6 +27,16 @@ Redeploy tras añadir las variables.
 
 Invitar a Roberto como **collaborator** en `Ashtoon95-R/weoffsite` con permiso **Write**.
 
+## Notas técnicas
+
+Decap CMS usa un **handshake en dos fases** antes de ir a GitHub:
+
+1. El popup envía `authorizing:github` al panel
+2. El panel responde y el popup redirige a GitHub
+3. El callback envía `authorization:github:success:{...}`
+
+Por eso `/api/auth` no puede redirigir directamente a GitHub. En Brave (sin `window.opener`) se usa `BroadcastChannel` como puente.
+
 ## 4. Verificación
 
 1. Abrir `https://we-offsite.vercel.app/admin/`
