@@ -32,11 +32,16 @@ const socialLinks = [
 	<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
 		<div class="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
 			<div class="lg:col-span-1">
-				<a
-					href={homeUrl}
-					class="cursor-pointer font-heading text-2xl font-bold tracking-tight text-espresso transition-colors duration-200 hover:text-rust"
-				>
-					We Offsite
+				<a href={homeUrl} class="inline-block cursor-pointer transition-opacity duration-200 hover:opacity-85">
+					<img
+						src="/icon/Logo-Completo.webp"
+						alt={t.common.brandName}
+						width="1335"
+						height="486"
+						class="h-8 w-auto"
+						loading="lazy"
+						decoding="async"
+					/>
 				</a>
 				<p class="mt-4 max-w-xs text-sm leading-relaxed text-muted">{t.footer.tagline}</p>
 			</div>

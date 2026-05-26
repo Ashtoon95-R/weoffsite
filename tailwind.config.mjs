@@ -37,7 +37,7 @@ export default {
 				md: 'var(--shadow-md)',
 				lg: 'var(--shadow-lg)',
 				xl: 'var(--shadow-xl)',
-				editorial: '0 20px 40px -15px rgba(28, 20, 16, 0.06)',
+				editorial: '0 20px 40px -15px rgba(15, 16, 25, 0.06)',
 			},
 			transitionTimingFunction: {
 				editorial: 'cubic-bezier(0.32, 0.72, 0, 1)',

@@ -1,10 +1,11 @@
 ---
-import { getCollection } from 'astro:content';
+import dubaiImg from '../../assets/hero-carousel/dubai-capslock.webp';
+import parkCityImg from '../../assets/hero-carousel/park-city-graphite.webp';
+import phuketImg from '../../assets/hero-carousel/phuket-kayzen.webp';
+import washingtonImg from '../../assets/hero-carousel/washington-incident.webp';
+import athensImg from '../../assets/hero-carousel/athens-incident.webp';
 import Button from '../ui/Button.astro';
-import CaseStudyCover from '../ui/CaseStudyCover.astro';
 import { getTranslations, type Locale } from '../../i18n';
-import { getCaseStudySlug } from '../../utils/case-studies';
-import { getCaseStudyCoverImage } from '../../utils/case-study-assets';
 import { localePath } from '../../utils/paths';
 
 interface Props {
@@ -14,15 +15,16 @@ interface Props {
 const { locale } = Astro.props;
 const t = getTranslations(locale);
 
-const studies = (await getCollection('case-studies', ({ data }) => data.lang === locale)).sort(
-	(a, b) => a.data.order - b.data.order,
-);
-const featuredStudy = studies[0];
-const featuredCover = featuredStudy ? getCaseStudyCoverImage(getCaseStudySlug(featuredStudy.id)) : undefined;
+const carouselImages = [dubaiImg, parkCityImg, phuketImg, washingtonImg, athensImg];
+
+const slides = t.hero.slides.map((slide, index) => ({
+	...slide,
+	image: carouselImages[index],
+}));
 
 const trustBadges = [
-	{ value: `${t.stats.stat1Value}${t.stats.stat1Suffix}`, label: t.stats.stat1Label },
-	{ value: `${t.stats.stat2Value}${t.stats.stat2Suffix}`, label: t.stats.stat2Label },
+	{ value: `${t.hero.badge1Value}${t.hero.badge1Suffix}`, label: t.hero.badge1Label },
+	{ value: `${t.hero.badge2Value}${t.hero.badge2Suffix}`, label: t.hero.badge2Label },
 ];
 ---
 
@@ -37,14 +39,7 @@ const trustBadges = [
 				class="reveal mt-4 font-heading text-[clamp(2.25rem,5vw,3.75rem)] font-bold leading-[1.05] tracking-tight text-espresso"
 				style="letter-spacing: -0.03em;"
 			>
-				{t.hero.title.split('80%').map((part, index, parts) => (
-					<>
-						{part}
-						{index < parts.length - 1 && (
-							<span class="text-rust underline decoration-gold decoration-2 underline-offset-4">80%</span>
-						)}
-					</>
-				))}
+				{t.hero.title}
 			</h1>
 
 			<p class="reveal reveal-delay-1 mt-6 max-w-lg text-lg leading-relaxed text-muted">
@@ -71,34 +66,51 @@ const trustBadges = [
 			</div>
 		</div>
 
-		{
-			featuredStudy && (
-				<div class="reveal reveal-delay-2 relative">
-					<div class="double-bezel">
-						<div class="double-bezel-inner overflow-hidden shadow-editorial">
-							{featuredCover ? (
-								<CaseStudyCover
-									src={featuredCover}
-									alt={`${featuredStudy.data.company} — ${featuredStudy.data.location}`}
-									variant="hero"
-									loading="eager"
-									class="aspect-[4/5] w-full object-cover"
-								/>
-							) : (
+		<div class="reveal reveal-delay-2 relative" data-hero-carousel>
+			<div class="double-bezel">
+				<div class="double-bezel-inner overflow-hidden shadow-editorial">
+					<div class="hero-carousel relative aspect-[4/5] w-full bg-espresso/5">
+						{
+							slides.map((slide, index) => (
 								<div
-									class="aspect-[4/5] w-full bg-gradient-to-br from-espresso/5 via-rust/10 to-sage/10"
-									role="img"
-									aria-label={`${featuredStudy.data.company} — ${featuredStudy.data.location}`}
-								></div>
-							)}
-						</div>
-					</div>
-					<div class="absolute -bottom-4 -left-4 hidden rounded-2xl border border-black/[0.06] bg-white/90 px-5 py-4 shadow-editorial backdrop-blur-sm md:block">
-						<p class="font-mono text-[10px] uppercase tracking-[0.2em] text-sage">{featuredStudy.data.location}</p>
-						<p class="mt-1 font-heading text-sm font-bold text-espresso">{featuredStudy.data.company}</p>
+									data-hero-slide
+									class:list={['hero-carousel-slide', index === 0 && 'is-active']}
+									aria-hidden={index !== 0}
+								>
+									<img
+										src={slide.image.src}
+										alt={`${slide.company} — ${slide.location}`}
+										width={slide.image.width}
+										height={slide.image.height}
+										sizes="(min-width: 1024px) 480px, 100vw"
+										loading={index === 0 ? 'eager' : 'lazy'}
+										decoding="async"
+										class="h-full w-full object-cover"
+									/>
+								</div>
+							))
+						}
 					</div>
 				</div>
-			)
-		}
+			</div>
+			<div class="absolute -bottom-4 -left-4 z-10 hidden w-max rounded-2xl border border-black/[0.06] bg-white/90 px-5 py-4 shadow-editorial backdrop-blur-sm md:block">
+				<div class="grid [&>[data-hero-caption]]:col-start-1 [&>[data-hero-caption]]:row-start-1">
+					{
+						slides.map((slide, index) => (
+							<div
+								data-hero-caption
+								class:list={['hero-carousel-caption', index === 0 && 'is-active']}
+								aria-hidden={index !== 0}
+							>
+								<p class="font-mono text-[10px] uppercase tracking-[0.2em] text-sage">{slide.location}</p>
+								<p class="mt-1 font-heading text-sm font-bold text-espresso">{slide.company}</p>
+							</div>
+						))
+					}
+				</div>
+			</div>
+		</div>
 	</div>
 </section>
+
+<script src="../../scripts/hero-carousel.ts"></script>

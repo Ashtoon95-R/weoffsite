@@ -6,7 +6,7 @@ const ASSETS_DIR = join(process.cwd(), 'src/assets');
 const MAX_WIDTH = 2400;
 const WEBP_QUALITY = 90;
 const KEEP_SOURCES = process.argv.includes('--keep-sources');
-const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg']);
+const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.heic', '.heif']);
 
 async function collectSources(dir) {
 	const entries = await readdir(dir, { withFileTypes: true });

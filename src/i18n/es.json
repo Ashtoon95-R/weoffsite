@@ -174,10 +174,23 @@
 		}
 	},
 	"hero": {
-		"title": "Ahorra un 80% de tiempo planificando tu retiro de empresa o evento",
-		"subtitle": "En We Offsite somos expertos en la planificación de eventos. Ayudamos a empresas remotas a organizar retiros de equipo únicos, optimizando costes y logística.",
+		"title": "Ahorra un 80% del tiempo planificando el retiro de tu empresa",
+		"subtitle": "Nos encargamos del trabajo pesado para ofrecer retiros memorables y offsites de equipo para empresas de 30 a 1.000 personas",
 		"ctaPrimary": "Agenda una llamada",
-		"ctaSecondary": "Ver casos de éxito"
+		"ctaSecondary": "Ver casos de éxito",
+		"badge1Value": "5",
+		"badge1Suffix": "★",
+		"badge1Label": "Reseñas verificadas en Google",
+		"badge2Value": "200",
+		"badge2Suffix": "+",
+		"badge2Label": "Eventos corporativos planificados",
+		"slides": [
+			{ "company": "Capslock", "location": "Dubái" },
+			{ "company": "Graphite", "location": "Park City" },
+			{ "company": "Kayzen", "location": "Phuket" },
+			{ "company": "Incident", "location": "Washington" },
+			{ "company": "Incident", "location": "Atenas" }
+		]
 	},
 	"logoBar": {
 		"prefix": "Equipos que confían en nosotros —"

@@ -24,7 +24,7 @@
 		"caseStudies": "Case Studies",
 		"contact": "Contact",
 		"login": "Log in",
-		"cta": "Book a call"
+		"cta": "Schedule a call"
 	},
 	"about": {
 		"meta": {
@@ -174,10 +174,23 @@
 		}
 	},
 	"hero": {
-		"title": "Save 80% of your time planning your company retreat or event",
-		"subtitle": "At We Offsite we are event planning experts. We help remote companies organize unique team retreats, optimizing costs and logistics.",
-		"ctaPrimary": "Book a call",
-		"ctaSecondary": "View case studies"
+		"title": "Save 80% of the time planning your company retreat",
+		"subtitle": "We handle the heavy lifting to deliver memorable retreats and team offsites for companies from 30 to 1,000 people",
+		"ctaPrimary": "Schedule a call",
+		"ctaSecondary": "View case studies",
+		"badge1Value": "5",
+		"badge1Suffix": "★",
+		"badge1Label": "Verified Google reviews",
+		"badge2Value": "200",
+		"badge2Suffix": "+",
+		"badge2Label": "Company events planned",
+		"slides": [
+			{ "company": "Capslock", "location": "Dubai" },
+			{ "company": "Graphite", "location": "Park City" },
+			{ "company": "Kayzen", "location": "Phuket" },
+			{ "company": "Incident", "location": "Washington" },
+			{ "company": "Incident", "location": "Athens" }
+		]
 	},
 	"logoBar": {
 		"prefix": "Trusted by teams at —"
