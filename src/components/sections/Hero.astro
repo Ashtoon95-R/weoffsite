@@ -39,7 +39,12 @@ const trustBadges = [
 				class="reveal mt-4 font-heading text-[clamp(2.25rem,5vw,3.75rem)] font-bold leading-[1.05] tracking-tight text-espresso"
 				style="letter-spacing: -0.03em;"
 			>
-				{t.hero.title}
+				{t.hero.title.split('80%').map((part, index, parts) => (
+					<>
+						{part}
+						{index < parts.length - 1 && <span class="text-rust">80%</span>}
+					</>
+				))}
 			</h1>
 
 			<p class="reveal reveal-delay-1 mt-6 max-w-lg text-lg leading-relaxed text-muted">

@@ -1,4 +1,5 @@
 ---
+import { trustedLogos } from '../../data/trusted-logos';
 import { getTranslations, type Locale } from '../../i18n';
 
 interface Props {
@@ -8,7 +9,7 @@ interface Props {
 const { locale } = Astro.props;
 const t = getTranslations(locale);
 
-const logos = ['Kayzen', 'Paperlike', 'Incident.io', 'OPTI Digital', 'Balena', 'Definely'];
+const marqueeLogos = [...trustedLogos, ...trustedLogos];
 ---
 
 <section class="overflow-hidden border-y border-black/[0.06] bg-surface py-12" aria-label={t.logoBar.prefix}>
@@ -16,16 +17,43 @@ const logos = ['Kayzen', 'Paperlike', 'Incident.io', 'OPTI Digital', 'Balena', '
 		{t.logoBar.prefix}
 	</p>
 
-	<div class="overflow-hidden" aria-hidden="true">
-		<div class="marquee-track flex w-max items-center gap-16 px-8">
+	<div class="overflow-hidden">
+		<div class="marquee-track flex w-max items-center gap-10 px-8 md:gap-14">
 			{
-				[...logos, ...logos].map((logo) => (
-					<span class="flex cursor-default select-none items-center gap-4 font-mono text-sm uppercase tracking-[0.15em] text-espresso/40 transition-colors duration-300 hover:text-espresso">
-						<span class="h-px w-6 bg-rust/30" aria-hidden="true"></span>
-						{logo}
-					</span>
-				))
+				marqueeLogos.map((logo) => {
+					const scale = 'scale' in logo && logo.scale ? logo.scale : 1;
+					return (
+						<div class="flex h-12 w-[15rem] shrink-0 items-center justify-center md:h-14">
+							<img
+								src={`/logos/${logo.file}`}
+								alt={logo.name}
+								width={240}
+								height={72}
+								loading="lazy"
+								decoding="async"
+								class="max-h-full w-auto max-w-full object-contain opacity-60 grayscale transition-all duration-300 hover:opacity-95 hover:grayscale-0"
+								style={scale !== 1 ? `transform: scale(${scale}); transform-origin: center;` : undefined}
+								data-logo-fallback={logo.name}
+							/>
+						</div>
+					);
+				})
 			}
 		</div>
 	</div>
 </section>
+
+<script>
+	document.querySelectorAll<HTMLImageElement>('[data-logo-fallback]').forEach((img) => {
+		img.addEventListener('error', () => {
+			const name = img.dataset.logoFallback;
+			if (!name || img.dataset.fallbackApplied) return;
+			img.dataset.fallbackApplied = 'true';
+			const span = document.createElement('span');
+			span.className =
+				'font-mono text-sm uppercase tracking-[0.15em] text-espresso/40';
+			span.textContent = name;
+			img.replaceWith(span);
+		});
+	});
+</script>

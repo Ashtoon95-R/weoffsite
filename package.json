@@ -13,6 +13,7 @@
     "icons:optimize": "node scripts/optimize-public-icons.mjs",
     "fold:optimize": "node scripts/optimize-fold-images.mjs --keep-sources",
     "hero:prepare": "node scripts/prepare-hero-carousel.mjs",
+    "logos:optimize": "node scripts/optimize-trusted-logos.mjs",
     "images:migrate-case-studies": "node scripts/migrate-case-study-assets.mjs",
     "preview": "astro preview",
     "astro": "astro"
